@@ -20,6 +20,11 @@ struct ContentView: View {
                 }
         }
         .accentColor(.red)
+        .onAppear {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground() // View에 맞게 투명도 조절하지 않음
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
     }
 }
 
