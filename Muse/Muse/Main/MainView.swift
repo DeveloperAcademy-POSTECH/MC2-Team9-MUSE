@@ -9,7 +9,14 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        Text("메인 뷰!")
+        ZStack {
+            Color.bgGrey.ignoresSafeArea()
+            ZStack {
+                Image("machine")
+                Image("ticket")
+                Text("메인 뷰!good")
+            }
+        }
     }
 }
 
