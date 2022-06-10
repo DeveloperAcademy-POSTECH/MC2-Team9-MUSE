@@ -102,9 +102,9 @@
 			children = (
 				84A776732852D809001FC86E /* MuseApp.swift */,
 				84A776752852D809001FC86E /* ContentView.swift */,
-				84A7769D2852EF75001FC86E /* MainView.swift */,
-				84A7769F2852FD70001FC86E /* MyPageView.swift */,
-				84A776A1285301BF001FC86E /* MakeTicketView.swift */,
+				84A776A528532628001FC86E /* Main */,
+				84A776A628532632001FC86E /* MyPage */,
+				84A776A72853264A001FC86E /* MakeTicket */,
 				84A776772852D80A001FC86E /* Assets.xcassets */,
 				84A776792852D80A001FC86E /* Preview Content */,
 			);
@@ -134,6 +134,30 @@
 				84A776902852D80A001FC86E /* MuseUITestsLaunchTests.swift */,
 			);
 			path = MuseUITests;
+			sourceTree = "<group>";
+		};
+		84A776A528532628001FC86E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				84A7769D2852EF75001FC86E /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		84A776A628532632001FC86E /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				84A7769F2852FD70001FC86E /* MyPageView.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		84A776A72853264A001FC86E /* MakeTicket */ = {
+			isa = PBXGroup;
+			children = (
+				84A776A1285301BF001FC86E /* MakeTicketView.swift */,
+			);
+			path = MakeTicket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
