@@ -12,13 +12,11 @@ struct ContentView: View {
         TabView {
             MainView()
                 .tabItem {
-                    Image(systemName: "house")
-                    Text("홈")
+                    Label("홈", systemImage: "house")
                 }
             MyPageView()
                 .tabItem {
-                    Image(systemName: "square.grid.2x2.fill")
-                    Text("내 라이브러리")
+                    Label("내 라이브러리", systemImage: "square.grid.2x2.fill")
                 }
         }
         .accentColor(.red)
