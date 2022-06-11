@@ -21,7 +21,7 @@ struct ContentView: View {
                     Text("내 라이브러리")
                 }
         }
-        .accentColor(.red)
+        .accentColor(.customPink)
     }
 }
 
