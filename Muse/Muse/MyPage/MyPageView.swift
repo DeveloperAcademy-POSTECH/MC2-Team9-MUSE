@@ -12,29 +12,16 @@ enum LibraryType: String, CaseIterable {
     case saved = "저장한 티켓"
 }
 
-struct TicketListView: View {
-    var ticketList: String
-    
-    var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                ForEach(0..<100) {_ in
-                    Text(ticketList)
-                }
-            }
-        }
-    }
-}
-
+// 선택된 segmentedPicker에 따라 TicketListView 표시
 struct ChosenView: View {
     var selectedSide: LibraryType
     
     var body: some View {
         switch selectedSide {
             case .myTicket:
-                TicketListView(ticketList: "myTicketList")
+                TicketListView(ticketList: "바람이 분다")
             case .saved:
-                TicketListView(ticketList: "savedTicketList")
+                TicketListView(ticketList: "1월에서 6월까지")
         }
     }
 }
