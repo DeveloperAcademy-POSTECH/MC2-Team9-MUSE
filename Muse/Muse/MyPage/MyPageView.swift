@@ -38,13 +38,9 @@ struct MyPageView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
-                    Button(action: {
-                        // 동작 코드
-                        print("글쓰기")
-                    }) {
+                    NavigationLink(destination: MakeTicketView()) {
                         Image(systemName: "square.and.pencil")
                             .font(.title)
-                            .foregroundColor(.black)
                     }
                 }
                 .padding(.top)
@@ -62,6 +58,7 @@ struct MyPageView: View {
                 ChosenView(selectedSide: selectedSide)
             }
             .navigationBarHidden(true)
+            .navigationTitle("내 라이브러리")
             .background(Color(red: 248/255, green: 248/255, blue: 248/255).edgesIgnoringSafeArea(.all))
         }
     }
