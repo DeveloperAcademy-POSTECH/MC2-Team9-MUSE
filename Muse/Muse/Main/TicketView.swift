@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct Ticket: View {
+    
+    @State private var offset: CGFloat = -500
+    
     var body: some View {
         ZStack{
                 Image("ticket")
-              
+                
+                .animation(Animation.easeInOut(duration: 3), value: offset)
+                
             HStack{
                 Image("Album")
                     .resizable()
@@ -19,7 +24,7 @@ struct Ticket: View {
                     .offset(x:40,y:-180)
             VStack(alignment: .leading){
                 Text("Dreams Like Me")
-                        .font(.headline)
+                    .font(.headline)
                     .offset(x:50,y:-180)
                 Text("Black Skirt")
                     .offset(x:50,y:-170)
@@ -48,12 +53,15 @@ struct Ticket: View {
                 .frame(width: 32, height: 32)
                 .background()
                 .clipShape(Circle())
+                .foregroundColor(.black)
                 }
             }
             .offset(x:0, y:186.5)
-            .foregroundColor(.black)
-                
+     
     }
+        .onTapGesture { offset += 500.0 }
+        .animation(Animation.easeInOut(duration: 3), value: offset)
+        .offset(y: offset)
 }
 }
 struct Ticket_Previews: PreviewProvider {
