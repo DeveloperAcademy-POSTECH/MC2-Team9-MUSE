@@ -19,7 +19,7 @@ struct ContentView: View {
                     Label("내 라이브러리", systemImage: "square.grid.2x2.fill")
                 }
         }
-        .accentColor(.red)
+        .accentColor(.customPink)
         .onAppear {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground() // View에 맞게 투명도 조절하지 않음
