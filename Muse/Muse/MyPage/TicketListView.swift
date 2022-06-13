@@ -45,6 +45,10 @@ struct TicketListView: View {
                     .background(Color.white)
                     .cornerRadius(15)
                     .shadow(color: .gray.opacity(0.5), radius: 5)
+                    .onTapGesture {
+                        // 카드 열기 동작
+                        print("card \(number)")
+                    }
                 }
             }
             .padding(.top, 10)

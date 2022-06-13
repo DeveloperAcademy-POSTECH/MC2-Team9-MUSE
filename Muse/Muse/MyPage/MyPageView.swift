@@ -40,6 +40,10 @@ struct MyPageView: View {
                     Spacer()
                     Image(systemName: "square.and.pencil")
                         .font(.title)
+                        .onTapGesture {
+                            // 동작 코드
+                            print("글쓰기")
+                        }
                 }
                 .padding()
                 // Picker
