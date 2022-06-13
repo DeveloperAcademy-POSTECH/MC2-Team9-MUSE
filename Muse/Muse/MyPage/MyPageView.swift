@@ -31,18 +31,30 @@ struct MyPageView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
+                // Header
+                HStack {
+                    Text("내 라이브러리")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Spacer()
+                    Image(systemName: "square.and.pencil")
+                        .font(.title)
+                }
+                .padding()
+                // Picker
                 Picker("Choose a Side", selection: $selectedSide) {
                     ForEach(LibraryType.allCases, id: \.self) {
                         Text($0.rawValue)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding()
+                .padding(.horizontal)
+                .padding(.vertical, 10)
                 
                 ChosenView(selectedSide: selectedSide)
             }
-            .navigationTitle("내 라이브러리")
+            .navigationBarHidden(true)
             .background(Color(red: 248/255, green: 248/255, blue: 248/255).edgesIgnoringSafeArea(.all))
         }
     }
