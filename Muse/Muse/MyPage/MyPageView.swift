@@ -38,14 +38,18 @@ struct MyPageView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     Spacer()
-                    Image(systemName: "square.and.pencil")
-                        .font(.title)
-                        .onTapGesture {
-                            // 동작 코드
-                            print("글쓰기")
-                        }
+                    Button(action: {
+                        // 동작 코드
+                        print("글쓰기")
+                    }) {
+                        Image(systemName: "square.and.pencil")
+                            .font(.title)
+                            .foregroundColor(.black)
+                    }
                 }
-                .padding()
+                .padding(.top)
+                .padding(.bottom, 10)
+                .padding(.horizontal)
                 // Picker
                 Picker("Choose a Side", selection: $selectedSide) {
                     ForEach(LibraryType.allCases, id: \.self) {
@@ -53,8 +57,7 @@ struct MyPageView: View {
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding(.horizontal)
-                .padding(.vertical, 10)
+                .padding()
                 
                 ChosenView(selectedSide: selectedSide)
             }
