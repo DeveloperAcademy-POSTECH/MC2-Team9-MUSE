@@ -15,7 +15,7 @@ struct TicketListView: View {
             VStack(spacing: -20) {
                 Spacer() // 리스트 거꾸로 돌리려고..
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight:0, maxHeight: .infinity, alignment: Alignment.topLeading)
-                ForEach(0..<5) { number in
+                ForEach(0..<15) { number in
                     // 카드 리스트 Vstack
                     VStack (alignment: .center, spacing: 10) {
                         // 카드 내 Content HStack
@@ -27,7 +27,7 @@ struct TicketListView: View {
                                     .fontWeight(.bold)
                                     .multilineTextAlignment(.leading)
                                     .lineLimit(1)
-                                Text("이소라")
+                                Text("이소라 \(number)")
                                     .font(.callout)
                                     .multilineTextAlignment(.leading)
                                     .lineLimit(1)
@@ -51,7 +51,7 @@ struct TicketListView: View {
                     }
                 }
             }
-            .padding(.top, 10)
+            .padding(.top, 20)
             .padding(.bottom, -20)
             .frame(maxWidth: .infinity)
             .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
