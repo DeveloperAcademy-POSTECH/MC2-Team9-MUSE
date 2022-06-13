@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TicketListView: View {
     var ticketList: String
+    var isMyTicket: Bool
     
     var body: some View {
         ScrollView {
@@ -35,8 +36,10 @@ struct TicketListView: View {
                             }
                             Spacer()
                             // 조건문으로 받아오는 데이터 타입에 따라(저장한 티켓에서는) 아래 내용 표시 X
-                            Image(systemName: "square.and.arrow.down")
-                            Text("22")
+                            if isMyTicket {
+                                Image(systemName: "square.and.arrow.down")
+                                Text("22")
+                            }
                         }
                         .padding(.top)
                         .padding(.horizontal, 20)
@@ -62,6 +65,6 @@ struct TicketListView: View {
 
 struct TicketListView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketListView(ticketList: "That That")
+        TicketListView(ticketList: "That That", isMyTicket: true)
     }
 }

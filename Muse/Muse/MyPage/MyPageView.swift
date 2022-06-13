@@ -19,9 +19,9 @@ struct ChosenView: View {
     var body: some View {
         switch selectedSide {
             case .myTicket:
-                TicketListView(ticketList: "바람이 분다")
+            TicketListView(ticketList: "바람이 분다", isMyTicket: true)
             case .saved:
-                TicketListView(ticketList: "1월에서 6월까지")
+            TicketListView(ticketList: "1월에서 6월까지", isMyTicket: false)
         }
     }
 }
