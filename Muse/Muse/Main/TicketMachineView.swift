@@ -13,7 +13,6 @@ struct TicketMachineView: View {
             Image("machine")
                 .resizable()
                 .scaledToFit()
-                .frame(width: .infinity)
             
             VStack(spacing:40){
                 Text("뮤즈풀한 음악을 위해\n티켓을 뽑아보세요.")
@@ -37,7 +36,6 @@ struct TicketMachineView: View {
                 .multilineTextAlignment(.center)
             }
         }
-        .frame(width: .infinity, height: .infinity)
         .padding(.horizontal)
     }
 }
