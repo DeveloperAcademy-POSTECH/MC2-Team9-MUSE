@@ -20,6 +20,9 @@ struct MakeTicketView: View {
     @State var searchText = ""
     @State var comment: String = ""
     
+    @State private var isbuttonActivated = false
+    // 버튼 활성화 여부 저장할 변수
+    
     var body: some View {
         ZStack {
             Color.bgGrey.ignoresSafeArea()
@@ -59,8 +62,8 @@ struct MakeTicketView: View {
                                     Text("제목, 가수를 입력해 보세요")
                                         .multilineTextAlignment(.center)
                                         .foregroundColor(.customGrey)
-//                                    TextField("제목, 가수 등", text: $searchText)
-//                                        .disableAutocorrection(true)
+                                    //                                    TextField("제목, 가수 등", text: $searchText)
+                                    //                                        .disableAutocorrection(true)
                                 }
                             }
                             .padding()
@@ -104,6 +107,9 @@ struct MakeTicketView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.customGrey)
                                     .padding(13)
+                                    .onTapGesture {
+                                        isbuttonActivated = true
+                                    }
                             }
                             TextEditor(text: $comment)
                                 .font(.subheadline)
@@ -128,8 +134,16 @@ struct MakeTicketView: View {
                     //작성 후 저장하는 코드를 짜야하는데 알려주세용
                 }, label: {
                     ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(.customPink)
+                        // 버튼 활성화 조건문 구현
+                        if (isbuttonActivated == false){
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(Color.gray)
+                        }
+                        else {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(Color.customPink)
+                        }
+                        
                         HStack {
                             Image("ticket icon")
                             Text("작성 완료")
@@ -140,6 +154,8 @@ struct MakeTicketView: View {
                     .frame(width: 350, height: 56)
                 })
                 .padding()
+                .disabled(isbuttonActivated == false)
+                // button default : 비활성화
             }
         }
         .navigationBarTitleDisplayMode(.inline)
