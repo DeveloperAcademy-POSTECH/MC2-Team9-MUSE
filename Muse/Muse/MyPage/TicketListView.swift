@@ -53,7 +53,7 @@ struct TicketListView: View {
                     .frame(width: 350, height: 100, alignment: .top)
                     .background(Color.white)
                     .cornerRadius(15)
-                    .shadow(color: .gray.opacity(0.5), radius: 5)
+                    .shadow(color: .gray.opacity(0.5), radius: 3)
                 }
             }
             .padding(.top, 20)

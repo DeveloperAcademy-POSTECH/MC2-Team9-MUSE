@@ -23,13 +23,18 @@ struct MakeTicketView: View {
     var body: some View {
         ZStack {
             Color.bgGrey.ignoresSafeArea()
-            VStack {
-                Text("나만의 음악 티켓을 만들어 보세요.")
-                    .font(.title2.bold())
-                    .padding(.bottom)
+            VStack(spacing: 0) {
+//                Text("나만의 음악 티켓을 만들어 보세요.")
+//                    .font(.title2.bold())
+//                    .padding(.bottom)
                 ZStack {
                     Image("machine")
+                        .resizable()
+                        .scaledToFit()
                     Image("ticket")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.all, 32)
                     VStack {
                         Text("Song")
                             .font(.subheadline)
@@ -112,9 +117,11 @@ struct MakeTicketView: View {
                         .shadow(color: Color(red: 237/255, green: 237/255, blue: 237/255), radius: 2, x: 0, y: 2)
                         Spacer()
                     }
+                    .padding(.top, 5)
                     .frame(width: 286, height: 451)
                 }
-                
+                .padding(.top, 27)
+                .padding(.horizontal)
                 
                 Button(action: {
                     print("작성 완료다잉")
@@ -132,8 +139,11 @@ struct MakeTicketView: View {
                     }
                     .frame(width: 350, height: 56)
                 })
+                .padding()
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("티켓 제작")
     }
 }
 
