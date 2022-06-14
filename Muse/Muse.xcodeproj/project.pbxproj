@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E93F19A2858676F00AC8898 /* MusicSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F1992858676F00AC8898 /* MusicSearchView.swift */; };
+		0E93F19C2858679B00AC8898 /* SearchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F19B2858679B00AC8898 /* SearchDataModel.swift */; };
+		0E93F19E2858689300AC8898 /* MusicSearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F19D2858689300AC8898 /* MusicSearchApp.swift */; };
+		0E93F1A0285869F100AC8898 /* TicketWritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F19F285869F100AC8898 /* TicketWritingView.swift */; };
+		0E93F1A228586A8700AC8898 /* SongListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F1A128586A8700AC8898 /* SongListViewModel.swift */; };
+		0E93F1A428586AB000AC8898 /* ArtworkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F1A328586AB000AC8898 /* ArtworkLoader.swift */; };
 		4452235E2858360500F456CD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4452235D2858360500F456CD /* FirebaseAuth */; };
 		445223602858360500F456CD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4452235F2858360500F456CD /* FirebaseDatabase */; };
 		445223622858360500F456CD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 445223612858360500F456CD /* FirebaseFirestore */; };
@@ -56,6 +62,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E93F1992858676F00AC8898 /* MusicSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchView.swift; sourceTree = "<group>"; };
+		0E93F19B2858679B00AC8898 /* SearchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataModel.swift; sourceTree = "<group>"; };
+		0E93F19D2858689300AC8898 /* MusicSearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchApp.swift; sourceTree = "<group>"; };
+		0E93F19F285869F100AC8898 /* TicketWritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketWritingView.swift; sourceTree = "<group>"; };
+		0E93F1A128586A8700AC8898 /* SongListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewModel.swift; sourceTree = "<group>"; };
+		0E93F1A328586AB000AC8898 /* ArtworkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLoader.swift; sourceTree = "<group>"; };
 		63B2EC6E2856BE5200E9E9CA /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		63B2EC70285765D100E9E9CA /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		843766EC28587EE500339579 /* TicketMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketMachineView.swift; sourceTree = "<group>"; };
@@ -115,6 +127,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E93F1962858670500AC8898 /* MusicSeach */ = {
+			isa = PBXGroup;
+			children = (
+				0E93F19F285869F100AC8898 /* TicketWritingView.swift */,
+				0E93F1A128586A8700AC8898 /* SongListViewModel.swift */,
+				0E93F1A328586AB000AC8898 /* ArtworkLoader.swift */,
+				0E93F19D2858689300AC8898 /* MusicSearchApp.swift */,
+				0E93F1992858676F00AC8898 /* MusicSearchView.swift */,
+				0E93F19B2858679B00AC8898 /* SearchDataModel.swift */,
+			);
+			path = MusicSeach;
+			sourceTree = "<group>";
+		};
 		84A776672852D809001FC86E = {
 			isa = PBXGroup;
 			children = (
@@ -138,12 +163,13 @@
 		84A776722852D809001FC86E /* Muse */ = {
 			isa = PBXGroup;
 			children = (
+				84A776A528532628001FC86E /* Main */,
+				0E93F1962858670500AC8898 /* MusicSeach */,
 				A2AC011C28582E5300130CB8 /* GoogleService-Info.plist */,
 				A2AC011728582DC900130CB8 /* Base */,
 				A2AC010528582DC300130CB8 /* Auth */,
 				84A776732852D809001FC86E /* MuseApp.swift */,
 				84A776752852D809001FC86E /* ContentView.swift */,
-				84A776A528532628001FC86E /* Main */,
 				84A776A628532632001FC86E /* MyPage */,
 				84A776A72853264A001FC86E /* MakeTicket */,
 				84A776772852D80A001FC86E /* Assets.xcassets */,
@@ -394,13 +420,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A776762852D809001FC86E /* ContentView.swift in Sources */,
+				0E93F1A0285869F100AC8898 /* TicketWritingView.swift in Sources */,
 				A2AC011B28582DC900130CB8 /* AuthButton.swift in Sources */,
 				84A776A02852FD70001FC86E /* MyPageView.swift in Sources */,
 				63B2EC71285765D100E9E9CA /* Animation.swift in Sources */,
 				84A7769E2852EF75001FC86E /* MainView.swift in Sources */,
 				84A776742852D809001FC86E /* MuseApp.swift in Sources */,
+                0E93F19A2858676F00AC8898 /* MusicSearchView.swift in Sources */,
+				0E93F1A428586AB000AC8898 /* ArtworkLoader.swift in Sources */,
 				843766ED28587EE500339579 /* TicketMachineView.swift in Sources */,
 				A2AC011228582DC300130CB8 /* RegistrationService.swift in Sources */,
+				0E93F1A228586A8700AC8898 /* SongListViewModel.swift in Sources */,
 				A2AC011028582DC300130CB8 /* ResisterView.swift in Sources */,
 				A2AC011128582DC300130CB8 /* RegistrationViewModel.swift in Sources */,
 				A2AC011628582DC300130CB8 /* SessionService.swift in Sources */,
@@ -412,7 +442,9 @@
 				84DC485A2856DEB300EE8067 /* TicketListView.swift in Sources */,
 				84A776A2285301BF001FC86E /* MakeTicketView.swift in Sources */,
 				63B2EC6F2856BE5200E9E9CA /* TicketView.swift in Sources */,
+				0E93F19E2858689300AC8898 /* MusicSearchApp.swift in Sources */,
 				DD983DAB285392FE00F8AD94 /* Color.swift in Sources */,
+				0E93F19C2858679B00AC8898 /* SearchDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
