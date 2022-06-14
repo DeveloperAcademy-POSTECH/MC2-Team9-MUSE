@@ -59,7 +59,7 @@ struct MyPageView: View {
             }
             .navigationBarHidden(true)
             .navigationTitle("내 라이브러리")
-            .background(Color(red: 248/255, green: 248/255, blue: 248/255).edgesIgnoringSafeArea(.all))
+            .background(Color.bgGrey.edgesIgnoringSafeArea(.all))
         }
     }
 }
