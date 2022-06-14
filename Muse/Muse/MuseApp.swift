@@ -11,7 +11,7 @@ import SwiftUI
 struct MuseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MakeTicketView(searchText: "", comment: "")
         }
     }
 }
