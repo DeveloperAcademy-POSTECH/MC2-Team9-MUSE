@@ -44,12 +44,6 @@ struct RegisterView: View {
                     } label: {
                         Image(systemName: "xmark")
                     }
-                    //
-                    //                    Picker("Gender", selection: $viewModel.newUser.gender) {
-                    //                        ForEach(Gender.allCases) { item in
-                    //                            Text(item.rawValue)
-                    //                        }
-                    //                    }
                 }
                 
                 AuthButton(title: "Sign Up",
@@ -61,7 +55,6 @@ struct RegisterView: View {
             }
             .padding(.horizontal, 15)
             .navigationTitle("Register")
-            //            .applyClose() 
             .alert(isPresented: $viewModel.hasError,
                    content: {
                 

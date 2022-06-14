@@ -56,6 +56,10 @@ final class RegistrationServiceImpl: RegistrationService { // final 선언 이�
                             let values = [RegistrationKeys.nickName.rawValue: credentials.nickName,
                                           RegistrationKeys.saveTrack.rawValue: credentials.saveTrack] as [String : Any]
                             
+                            print("register values")
+                            print(credentials.email)
+                            print(values)
+                            
                             Database
                                 .database()
                                 .reference()

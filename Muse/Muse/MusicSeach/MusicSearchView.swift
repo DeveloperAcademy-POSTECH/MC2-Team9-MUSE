@@ -22,10 +22,11 @@ struct MusicSearchView: View {
                 List(songListViewModel.songs) { song in
                     SongView(song: song)
                         .onTapGesture {
-                            self.ticketWritingViewModel.artistName = song.artistName
-                            self.ticketWritingViewModel.trackName = song.trackName
                             self.ticketWritingViewModel.artwork = song.artwork
+                            self.ticketWritingViewModel.artworkUrl = song.artworkUrl
                             self.ticketWritingViewModel.id = song.id
+                            self.ticketWritingViewModel.trackName = song.trackName
+                            self.ticketWritingViewModel.artistName = song.artistName
                             self.presentationMode.wrappedValue.dismiss()
 
                         }
@@ -131,8 +132,8 @@ struct SearchBar: UIViewRepresentable {
     }
 }
 
-struct MusicSearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        MusicSearchView(songListViewModel: SongListViewModel(), ticketWritingViewModel: TicketWritingViewModel())
-    }
-}
+//struct MusicSearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MusicSearchView(songListViewModel: SongListViewModel(), ticketWritingViewModel: TicketWritingViewModel())
+//    }
+//}
