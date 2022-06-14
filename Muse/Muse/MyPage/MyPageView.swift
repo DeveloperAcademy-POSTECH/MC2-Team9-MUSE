@@ -32,43 +32,40 @@ struct MyPageView: View {
     @State private var selectedSide: LibraryType = .myTicket
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // Header
-                HStack {
-                    Text("내 라이브러리")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    Spacer()
-                    NavigationLink(destination: MakeTicketView()) {
-                        Image(systemName: "square.and.pencil")
-                            .font(.title)
-                    }
+        VStack(spacing: 0) {
+            // Header
+            HStack {
+                Text("내 라이브러리")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Spacer()
+                Button(action: {
+                    service.logout()
+                }) {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                        .font(.title)
                 }
-                .padding(.top)
-                .padding(.bottom, 10)
-                .padding(.horizontal)
-                // Picker
-                Picker("Choose a Side", selection: $selectedSide) {
-                    ForEach(LibraryType.allCases, id: \.self) {
-                        Text($0.rawValue)
-                    }
+                NavigationLink(destination: MakeTicketView()) {
+                    Image(systemName: "square.and.pencil")
+                        .font(.title)
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                
-                ChosenView(selectedSide: selectedSide)
             }
-            .navigationBarHidden(true)
-            .navigationTitle("내 라이브러리")
-          
-            AuthButton(title: "LogOut",
-                       background: .blue,
-                       foreground: .white,
-                       border: .clear) {
-                service.logout()
+            .padding(.top)
+            .padding(.bottom, 10)
+            .padding(.horizontal)
+            // Picker
+            Picker("Choose a Side", selection: $selectedSide) {
+                ForEach(LibraryType.allCases, id: \.self) {
+                    Text($0.rawValue)
+                }
             }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+            
+            ChosenView(selectedSide: selectedSide)
         }
+        .navigationBarHidden(true)
+        .navigationTitle("내 라이브러리")
     }
 }
 
