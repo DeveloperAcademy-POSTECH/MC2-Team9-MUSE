@@ -47,24 +47,26 @@ struct MakeTicketView: View {
                             ZStack {
                                 Rectangle()
                                     .foregroundColor(.white)
+                                    .frame(height:30)
                                 HStack {
                                     Image(systemName: "magnifyingglass")
                                         .foregroundColor(.customGrey)
-                                    TextField("제목, 가수 등", text: $searchText)
-                                        .disableAutocorrection(true)
+                                    Text("제목, 가수를 입력해 보세요")
+                                        .multilineTextAlignment(.center)
+                                        .foregroundColor(.customGrey)
+//                                    TextField("제목, 가수 등", text: $searchText)
+//                                        .disableAutocorrection(true)
                                 }
-                                
                             }
-                            .padding(.leading, 7)
+                            .padding()
                             
                         }
                         .background(.white)
-                        .frame(width: 246, height: 44)
+                        .frame(width: 246, height: 30)
                         .cornerRadius(10)
                         .shadow(color: Color(red: 237/255, green: 237/255, blue: 237/255), radius: 2, x: 0, y: 2)
                         
-                        Divider().padding()
-                        HStack{
+                        HStack(){
                             ArtworkView(image: viewModel.artwork)
                                 .padding(.trailing)
                             VStack(alignment: .leading) {
@@ -74,7 +76,11 @@ struct MakeTicketView: View {
                                     .foregroundColor(.gray)
 //                                Text(String(viewModel.id ?? 0))
                             }
+                            Spacer()
                         }
+                        .padding()
+                        
+                        
                         
                         Text("Comment")
                             .font(.subheadline)
