@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MakeTicketView: View {
     @State var searchText = ""
-    @State var comment: String
+    @State var comment: String = ""
     
     var body: some View {
         ZStack {
