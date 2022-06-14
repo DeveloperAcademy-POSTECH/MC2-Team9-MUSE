@@ -29,10 +29,13 @@ struct MainView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.customGrey)
-                            Text("티켓 저장")
-                                .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
-                                .foregroundColor(Color.white)
-                                .padding()
+                            HStack(spacing: 5) {
+                                Image(systemName: "square.and.arrow.down")
+                                Text("티켓 저장")
+                            }
+                            .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
+                            .foregroundColor(Color.white)
+                            .padding()
                         }
                     })
                     .frame(width: 165, height: 56)
@@ -44,10 +47,14 @@ struct MainView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.customPink)
-                            Text("새 티켓 뽑기")
-                                .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
-                                .foregroundColor(Color.white)
-                                .padding()
+                            HStack(spacing: 5) {
+                                Image(systemName: "arrow.triangle.2.circlepath")
+                                Text("새 티켓 뽑기")
+                            }
+                            .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
+                            .foregroundColor(Color.white)
+                            .padding()
+                            
                         }
                     })
                     .frame(width: 165, height: 56)

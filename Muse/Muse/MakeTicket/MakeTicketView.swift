@@ -16,6 +16,7 @@ class TicketWritingViewModel: ObservableObject {
 }
 
 struct MakeTicketView: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = TicketWritingViewModel()
     @State var searchText = ""
     @State var comment: String = ""
@@ -27,9 +28,9 @@ struct MakeTicketView: View {
         ZStack {
             Color.bgGrey.ignoresSafeArea()
             VStack(spacing: 0) {
-//                Text("나만의 음악 티켓을 만들어 보세요.")
-//                    .font(.title2.bold())
-//                    .padding(.bottom)
+                Text("나만의 음악 티켓을 만들어 보세요.")
+                    .font(.title2.bold())
+                    .padding(.all, 22)
                 ZStack {
                     Image("machine")
                         .resizable()
@@ -88,8 +89,6 @@ struct MakeTicketView: View {
                         }
                         .padding()
                         
-                        
-                        
                         Text("Comment")
                             .font(.subheadline)
                             .foregroundColor(.customGrey)
@@ -126,40 +125,58 @@ struct MakeTicketView: View {
                     .padding(.top, 5)
                     .frame(width: 286, height: 451)
                 }
-                .padding(.top, 27)
                 .padding(.horizontal)
                 
-                Button(action: {
-                    print("작성 완료다잉")
-                    //작성 후 저장하는 코드를 짜야하는데 알려주세용
-                }, label: {
-                    ZStack {
-                        // 버튼 활성화 조건문 구현
-                        if (isbuttonActivated == false){
+                HStack(alignment: .center, spacing: 20) {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(Color.gray)
+                                .fill(Color.red)
+                            HStack(spacing: 5) {
+                                Image(systemName: "x.square")
+                                Text("작성 취소")
+                            }
+                            .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
+                            .foregroundColor(Color.white)
+                            .padding()
                         }
-                        else {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(Color.customPink)
+                    })
+                    .frame(width: 165, height: 56)
+                    
+                    Button(action: {
+                        //작성 후 저장하는 코드를 짜야하는데 알려주세용
+                        print("작성 완료다잉")
+                    }, label: {
+                        ZStack {
+                            // 버튼 활성화 조건문 구현
+                            if (isbuttonActivated == false){
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.gray)
+                            }
+                            else {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.customPink)
+                            }
+                            
+                            HStack(spacing: 5) {
+                                Image("ticket icon")
+                                Text("작성 완료")
+                            }
+                            .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
+                            .foregroundColor(Color.white)
+                            .padding()
                         }
-                        
-                        HStack {
-                            Image("ticket icon")
-                            Text("작성 완료")
-                                .font(.title3.bold())
-                                .foregroundColor(.white)
-                        }
-                    }
-                    .frame(width: 350, height: 56)
-                })
+                    })
+                    .disabled(isbuttonActivated == false) // button default : 비활성화
+                    .frame(width: 165, height: 56)
+                }
                 .padding()
-                .disabled(isbuttonActivated == false)
-                // button default : 비활성화
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("티켓 제작")
+        .navigationBarHidden(true)
+        .navigationTitle("티켓 만들기")
     }
 }
 
