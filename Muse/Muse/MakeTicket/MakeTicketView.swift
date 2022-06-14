@@ -53,27 +53,28 @@ struct MakeTicketView: View {
                                     TextField("제목, 가수 등", text: $searchText)
                                         .disableAutocorrection(true)
                                 }
-                                HStack{
-                                    ArtworkView(image: viewModel.artwork)
-                                        .padding(.trailing)
-                                    VStack(alignment: .leading) {
-                                        Text(viewModel.trackName ?? "ㅇㅇㅇㅇㅇㅇ")
-                                        Text(viewModel.artistName ?? "ㅇㅇㅇㅇㅇㅇ")
-                                            .font(.footnote)
-                                            .foregroundColor(.gray)
-//                                        Text(String(viewModel.id ?? 0))
-                                    }
-                                }
-                                .padding(.leading, 7)
                                 
                             }
-                            .background(.white)
-                            .frame(width: 246, height: 44)
-                            .cornerRadius(10)
-                            .shadow(color: Color(red: 237/255, green: 237/255, blue: 237/255), radius: 2, x: 0, y: 2)
+                            .padding(.leading, 7)
+                            
                         }
+                        .background(.white)
+                        .frame(width: 246, height: 44)
+                        .cornerRadius(10)
+                        .shadow(color: Color(red: 237/255, green: 237/255, blue: 237/255), radius: 2, x: 0, y: 2)
                         
                         Divider().padding()
+                        HStack{
+                            ArtworkView(image: viewModel.artwork)
+                                .padding(.trailing)
+                            VStack(alignment: .leading) {
+                                Text(viewModel.trackName ?? "")
+                                Text(viewModel.artistName ?? "")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+//                                Text(String(viewModel.id ?? 0))
+                            }
+                        }
                         
                         Text("Comment")
                             .font(.subheadline)
