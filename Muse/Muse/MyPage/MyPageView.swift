@@ -27,6 +27,8 @@ struct ChosenView: View {
 }
 
 struct MyPageView: View {
+
+    @EnvironmentObject var service: SessionServiceImpl
     @State private var selectedSide: LibraryType = .myTicket
     
     var body: some View {
@@ -63,6 +65,13 @@ struct MyPageView: View {
             }
             .navigationBarHidden(true)
             .background(Color(red: 248/255, green: 248/255, blue: 248/255).edgesIgnoringSafeArea(.all))
+          
+            AuthButton(title: "LogOut",
+                       background: .blue,
+                       foreground: .white,
+                       border: .clear) {
+                service.logout()
+            }
         }
     }
 }
