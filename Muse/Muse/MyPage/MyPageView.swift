@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct MyPageView: View {
+    
+    @EnvironmentObject var service: SessionServiceImpl
+    
     var body: some View {
-        Text("내 라이브러리 뷰!")
+        VStack{
+            Text("내 라이브러리 뷰!")
+            
+            AuthButton(title: "LogOut",
+                       background: .blue,
+                       foreground: .white,
+                       border: .clear) {
+                service.logout()
+            }
+        }
     }
 }
 
