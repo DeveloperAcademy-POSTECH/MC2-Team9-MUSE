@@ -7,7 +7,16 @@
 
 import SwiftUI
 
+class TicketWritingViewModel: ObservableObject {
+    @Published var trackName: String? = nil
+    @Published var artistName: String? = nil
+    @Published var id : Int? = nil
+    //앨범 불러오기
+    @Published var artwork : Image? = nil
+}
+
 struct MakeTicketView: View {
+    @ObservedObject var viewModel = TicketWritingViewModel()
     @State var searchText = ""
     @State var comment: String = ""
     
@@ -29,22 +38,40 @@ struct MakeTicketView: View {
                             .frame(width: 246, alignment: .leading)
                         
                         //Search Bar
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(.white)
-                            HStack {
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.customGrey)
-                                TextField("제목, 가수 등", text: $searchText)
-                                    .disableAutocorrection(true)
+                        NavigationLink {
+                            MusicSearchView(
+                                songListViewModel: SongListViewModel(),
+                                ticketWritingViewModel: viewModel
+                            )
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(.white)
+                                HStack {
+                                    Image(systemName: "magnifyingglass")
+                                        .foregroundColor(.customGrey)
+                                    TextField("제목, 가수 등", text: $searchText)
+                                        .disableAutocorrection(true)
+                                }
+                                HStack{
+                                    ArtworkView(image: viewModel.artwork)
+                                        .padding(.trailing)
+                                    VStack(alignment: .leading) {
+                                        Text(viewModel.trackName ?? "ㅇㅇㅇㅇㅇㅇ")
+                                        Text(viewModel.artistName ?? "ㅇㅇㅇㅇㅇㅇ")
+                                            .font(.footnote)
+                                            .foregroundColor(.gray)
+//                                        Text(String(viewModel.id ?? 0))
+                                    }
+                                }
+                                .padding(.leading, 7)
+                                
                             }
-                            .padding(.leading, 7)
-                            
+                            .background(.white)
+                            .frame(width: 246, height: 44)
+                            .cornerRadius(10)
+                            .shadow(color: Color(red: 237/255, green: 237/255, blue: 237/255), radius: 2, x: 0, y: 2)
                         }
-                        .background(.white)
-                        .frame(width: 246, height: 44)
-                        .cornerRadius(10)
-                        .shadow(color: Color(red: 237/255, green: 237/255, blue: 237/255), radius: 2, x: 0, y: 2)
                         
                         Divider().padding()
                         

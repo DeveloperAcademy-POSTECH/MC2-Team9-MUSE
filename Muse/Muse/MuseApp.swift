@@ -30,14 +30,15 @@ struct MuseApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                switch sessionService.state {
-                    case .loggedIn:
-                        ContentView()
-                            .environmentObject(sessionService)
-                    case .loggedOut:
-                        LoginView()
-                    }
-                
+                MakeTicketView()
+//                switch sessionService.state {
+//                    case .loggedIn:
+//                        ContentView()
+//                            .environmentObject(sessionService)
+//                    case .loggedOut:
+//                        LoginView()
+//                    }
+//
             }
         }
     }
