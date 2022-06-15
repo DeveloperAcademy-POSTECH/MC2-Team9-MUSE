@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Ticket: View {
     
-    @State private var offset: CGFloat = 0.0
+    @Binding var offset: CGFloat
     
     var body: some View {
       VStack{
@@ -79,8 +79,9 @@ struct Ticket: View {
     }
     
 }
-struct Ticket_Previews: PreviewProvider {
-    static var previews: some View {
-        Ticket()
-    }
-}
+
+//struct Ticket_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Ticket()
+//    }
+//}

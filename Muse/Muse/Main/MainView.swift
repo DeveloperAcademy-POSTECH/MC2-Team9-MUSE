@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     let screenSize: CGSize = UIScreen.main.bounds.size
+    @State var offset: CGFloat = 0.0
     
     var body: some View {
         ZStack {
@@ -43,6 +44,12 @@ struct MainView: View {
                     Button(action: {
                         // 랜덤한 새로운 티켓을 다시 보여주는 코드를 짜야 합니다.
                         print("새 티켓 뽑기 동작")
+                        
+                        offset = 0
+                        withAnimation {
+                        offset += 500
+                        }
+                        
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -61,6 +68,7 @@ struct MainView: View {
                 }
                 .padding()
             }
+            Ticket(offset: $offset)
         }
         .navigationBarHidden(true)
         .navigationTitle("Muse Ticket")
