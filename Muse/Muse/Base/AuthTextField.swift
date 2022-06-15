@@ -16,21 +16,19 @@ struct AuthTextField: View {
     
     var body: some View {
         HStack{
-            Image(systemName: "heart")
-                .font(.system(size: 18, weight: .semibold))
+            TextField("이메일을 입력해주세요", text: $text)
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.gray)
                 .padding(.leading, 20)
-                .foregroundColor(.gray)
-            TextField("a", text: $text)
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(.red)
-                .padding(.leading, 10)
-                .frame(maxWidth: .infinity, minHeight: 50)
+                .frame(width: 246, height: 44, alignment: .center)
         }
         .overlay {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 100)
                 .stroke()
-                .foregroundColor(.blue)
+                .frame(width: 246, height: 44, alignment: .center)
+                .foregroundColor(Color.customPink)
         }
+        .padding(.bottom, -5)
     }
 }
 
@@ -42,21 +40,18 @@ struct PwdTextFeild: View {
     
     var body: some View {
         HStack{
-            Image(systemName: "heart")
-                .font(.system(size: 18, weight: .semibold))
+            SecureField("비밀번호를 입력해주세요", text: $password)
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.gray)
                 .padding(.leading, 20)
-                .foregroundColor(.gray)
-            SecureField("a", text: $password)
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(.red)
-                .padding(.leading, 10)
-                .frame(maxWidth: .infinity, minHeight: 50)
+                .frame(width: 246, height: 44, alignment: .center)
         }
         .overlay {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke()
-                .foregroundColor(.blue)
+            RoundedRectangle(cornerRadius: 100).stroke()
+                .frame(width: 246, height: 44, alignment: .center)
+                .foregroundColor(Color.customPink)                
         }
+        .padding(.bottom, 20)
     }
 }
 
