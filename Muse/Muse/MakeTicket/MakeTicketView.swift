@@ -23,7 +23,6 @@ struct MakeTicketView: View {
         service: MakeTicketServiceImpl()
     )
     
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel = TicketWritingViewModel()
     @State var searchText = ""
     @State var comment: String = ""
@@ -35,11 +34,9 @@ struct MakeTicketView: View {
         ZStack {
             Color.bgGrey.ignoresSafeArea()
             VStack(spacing: 0) {
-
-                Text("나만의 음악 티켓을 만들어 보세요.")
-                    .font(.title2.bold())
-                    .padding(.all, 22)
-
+                //                Text("나만의 음악 티켓을 만들어 보세요.")
+                //                    .font(.title2.bold())
+                //                    .padding(.bottom)
                 ZStack {
                     Image("machine")
                         .resizable()
@@ -98,6 +95,8 @@ struct MakeTicketView: View {
                         }
                         .padding()
                         
+                        
+                        
                         Text("Comment")
                             .font(.subheadline)
                             .foregroundColor(.customGrey)
@@ -134,27 +133,10 @@ struct MakeTicketView: View {
                     .padding(.top, 5)
                     .frame(width: 286, height: 451)
                 }
+                .padding(.top, 27)
                 .padding(.horizontal)
-                
-                HStack(alignment: .center, spacing: 20) {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }, label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.red)
-                            HStack(spacing: 5) {
-                                Image(systemName: "x.square")
-                                Text("작성 취소")
-                            }
-                            .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
-                            .foregroundColor(Color.white)
-                            .padding()
-                        }
-                    })
-                    .frame(width: 165, height: 56)
-                    
-                    Button(action: {
+
+                Button(action: {
                     print("작성 완료다잉")
                     makeViewModel.ticket.trackName = viewModel.trackName ?? ""
                     makeViewModel.ticket.artist = viewModel.artistName ?? ""
@@ -176,31 +158,30 @@ struct MakeTicketView: View {
                         }
                         else {
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.customPink)
+                                .foregroundColor(Color.customPink)
                         }
-                            
-                        HStack(spacing: 5) {
+                        
+                        HStack {
                             Image("ticket icon")
                             Text("작성 완료")
+                                .font(.title3.bold())
+                                .foregroundColor(.white)
                         }
-                        .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
-                        .foregroundColor(Color.white)
-                        .padding()
                     }
+                    .frame(width: 350, height: 56)
                 })
-                .disabled(isbuttonActivated == false) // button default : 비활성화
-                .frame(width: 165, height: 56)
+                .padding()
+                .disabled(isbuttonActivated == false)
+                // button default : 비활성화
             }
-            .padding()
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("티켓 제작")
     }
-    .navigationBarHidden(true)
-    .navigationTitle("티켓 만들기")
-  }
-  }
+}
 
-  struct MakeTicketView_Previews: PreviewProvider {
-  static var previews: some View {
-    MakeTicketView(searchText: "", comment: "")
-  }
-  }
+struct MakeTicketView_Previews: PreviewProvider {
+    static var previews: some View {
+        MakeTicketView(searchText: "", comment: "")
+    }
+}
