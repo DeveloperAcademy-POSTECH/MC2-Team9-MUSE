@@ -17,37 +17,35 @@ struct LoginView: View {
         )
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 16) {
-                
-                AuthTextField(text: $viewModel.credentials.email,
-                              placeholder: "Email",
-                              keyboardType: .emailAddress,
-                              sfSymbol: "envelope")
-                
-                PwdTextFeild(password: $viewModel.credentials.password,
-                              placeholder: "Password",
-                             sfSymbol: "lock")
-                
-                AuthButton(title: "Login",
-                           background: .clear,
-                           foreground: .blue,
-                           border: .blue) {
-                    viewModel.login()
-                }
-                
-                AuthButton(title: "Register",
-                           background: .clear,
-                           foreground: .blue,
-                           border: .blue) {
-                    showRegistration.toggle()
-                }
-                .sheet(isPresented: $showRegistration) {
-                    RegisterView()
-                }
+        VStack(spacing: 16) {
+            AuthTextField(text: $viewModel.credentials.email,
+                          placeholder: "Email",
+                          keyboardType: .emailAddress,
+                          sfSymbol: "envelope")
+            
+            PwdTextFeild(password: $viewModel.credentials.password,
+                          placeholder: "Password",
+                         sfSymbol: "lock")
+            
+            AuthButton(title: "Login",
+                       background: .clear,
+                       foreground: .blue,
+                       border: .blue) {
+                viewModel.login()
             }
-            .padding(.horizontal, 15)
-            .navigationTitle("Login")
+            
+            AuthButton(title: "Register",
+                       background: .clear,
+                       foreground: .blue,
+                       border: .blue) {
+                showRegistration.toggle()
+            }
+            .sheet(isPresented: $showRegistration) {
+                RegisterView()
+            }
+        }
+        .padding(.horizontal, 15)
+        .navigationTitle("Login")
 //            .alert(isPresented: $viewModel.hasError,
 //                   content: {
 //
@@ -61,7 +59,6 @@ struct LoginView: View {
 //                        message: Text("Something went wrong"))
 //                }
 //            })
-        }
     }
 }
 

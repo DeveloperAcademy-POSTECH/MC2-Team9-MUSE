@@ -34,9 +34,10 @@ struct MakeTicketView: View {
         ZStack {
             Color.bgGrey.ignoresSafeArea()
             VStack(spacing: 0) {
-                //                Text("나만의 음악 티켓을 만들어 보세요.")
-                //                    .font(.title2.bold())
-                //                    .padding(.bottom)
+//                Text("나만의 음악 티켓을 만들어 보세요.")
+//                    .font(.title2.bold())
+//                    .padding(.horizontal)
+//                    .padding(.bottom, 32)
                 ZStack {
                     Image("machine")
                         .resizable()
@@ -135,7 +136,7 @@ struct MakeTicketView: View {
                 }
                 .padding(.top, 27)
                 .padding(.horizontal)
-
+              
                 Button(action: {
                     print("작성 완료다잉")
                     makeViewModel.ticket.trackName = viewModel.trackName ?? ""
@@ -161,7 +162,7 @@ struct MakeTicketView: View {
                                 .foregroundColor(Color.customPink)
                         }
                         
-                        HStack {
+                        HStack(spacing: 5) {
                             Image("ticket icon")
                             Text("작성 완료")
                                 .font(.title3.bold())
@@ -170,13 +171,17 @@ struct MakeTicketView: View {
                     }
                     .frame(width: 350, height: 56)
                 })
+                .disabled(isbuttonActivated == false) // button default : 비활성화
+                .frame(width: 350, height: 56)
                 .padding()
-                .disabled(isbuttonActivated == false)
-                // button default : 비활성화
             }
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("티켓 제작")
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("나만의 음악 티켓을 만들어 보세요.").font(.title2.bold())
+            }
+        }
     }
 }
 

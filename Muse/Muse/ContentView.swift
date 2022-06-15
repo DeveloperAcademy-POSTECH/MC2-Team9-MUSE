@@ -11,19 +11,15 @@ import Firebase
 struct ContentView: View {
     var body: some View {
         TabView {
-            NavigationView {
-                MainView()
-            }
-            .tabItem {
-                Label("홈", systemImage: "house")
-            }
+            MainView()
+                .tabItem {
+                    Label("홈", systemImage: "house")
+                }
             
-            NavigationView {
-                MyPageView()
-            }
-            .tabItem {
-                Label("내 라이브러리", systemImage: "square.grid.2x2.fill")
-            }
+            MyPageView()
+                .tabItem {
+                    Label("내 라이브러리", systemImage: "square.grid.2x2.fill")
+                }
         }
         .accentColor(.customPink)
         .onAppear {
