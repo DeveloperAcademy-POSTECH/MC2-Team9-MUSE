@@ -9,14 +9,15 @@ import SwiftUI
 
 struct Ticket: View {
     
-    @State private var offset: CGFloat = -500
+    @State private var offset: CGFloat = 0.0
     
     var body: some View {
+      VStack{
+          ZStack{
+              Image("machine")
+              
         ZStack{
                 Image("ticket")
-                
-                .animation(Animation.easeInOut(duration: 3), value: offset)
-                
             HStack{
                 Image("Album")
                     .resizable()
@@ -28,27 +29,24 @@ struct Ticket: View {
                     .offset(x:50,y:-180)
                 Text("Black Skirt")
                     .offset(x:50,y:-170)
-                
-                //텍스트 길어질때 자동 줄바꿈 하는법?
                 Divider()
                     .background(Color.black)
                     .frame(width: 250)
                     .offset(x:-40,y:-150)
                 }
             }
-            
+
             ScrollView{
                 Text("안녕하세요 제 이름은 검정치마........... 안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........")
             }
-                .frame(width: 260, height: 200)
-            //데이터 어떻게?
+                    .frame(width: 260, height: 200)
+
             Link(destination: URL(string: "https://music.apple.com/kr/album/dream-like-me/1626442550?i=1626442551/")!) {
                 ZStack{
                     Rectangle()
                             .frame(width: 243, height: 60)
                             .opacity(0)
                 Image("Play")
-            //컬러 검은색?
                 .resizable()
                 .frame(width: 32, height: 32)
                 .background()
@@ -57,12 +55,29 @@ struct Ticket: View {
                 }
             }
             .offset(x:0, y:186.5)
-     
+            
     }
-        .onTapGesture { offset += 500.0 }
-        .animation(Animation.easeInOut(duration: 3), value: offset)
+        .offset(y: -500)
+        .animation(Animation.easeInOut(duration: 2), value: offset)
         .offset(y: offset)
+         
+              Rectangle()
+                  .frame(width: 300, height: 200)
+                  .offset(y:-350)
+                  .foregroundColor(.white)
+              
+              Image("machine2")
+                  .offset(x:0, y:-327)
+          }
+          Button("눌러봐") {
+              withAnimation {
+              offset += 500
+                  }
+              }
 }
+        
+    }
+    
 }
 struct Ticket_Previews: PreviewProvider {
     static var previews: some View {
