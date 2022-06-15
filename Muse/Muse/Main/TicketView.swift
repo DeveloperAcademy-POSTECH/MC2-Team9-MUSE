@@ -58,7 +58,7 @@ struct Ticket: View {
             
     }
         .offset(y: -500)
-        .animation(Animation.easeInOut(duration: 2), value: offset)
+        .animation(Animation.easeInOut(duration: 1.5), value: offset)
         .offset(y: offset)
          
               Rectangle()
@@ -69,7 +69,7 @@ struct Ticket: View {
               Image("machine2")
                   .offset(x:0, y:-327)
           }
-          Button("눌러봐") {
+          Button("눌러") {
               withAnimation {
               offset += 500
                   }
