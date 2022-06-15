@@ -30,18 +30,18 @@ struct AuthButton: View {
     var body: some View {
         Button (action: handler, label: {
             Text(title)
-                .frame(maxWidth: .infinity, maxHeight: 50)
+                .frame(width: 246, height: 44, alignment: .center)
         })
         .background(background)
         .foregroundColor(foreground)
         .font(.system(size: 16, weight: .bold))
-        .cornerRadius(20)
+        .cornerRadius(100)
         .overlay {
             RoundedRectangle(cornerRadius: 20)
                 .stroke(border, lineWidth: 2)
-                
+                .frame(width: 246, height: 44, alignment: .center)
         }
-
+        .padding(.top, -15)
     }
 }
 
