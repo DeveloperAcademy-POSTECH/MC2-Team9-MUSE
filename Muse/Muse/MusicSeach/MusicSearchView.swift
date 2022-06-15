@@ -85,11 +85,14 @@ struct EmptyStateView: View {
     var body: some View {
         VStack {
             Spacer()
-            Image(systemName: "music.note")
-                .font(.system(size: 85))
+            Image(systemName: "music.note.list")
+                .font(.system(size: 100))
                 .padding(.bottom)
-            Text("Start searching for music...")
+                .foregroundColor(Color.customPink)
+            
+            Text("노래를 검색해주세요")
                 .font(.title)
+                .foregroundColor(Color.customPink)
             Spacer()
         }
         .padding()
@@ -107,7 +110,9 @@ struct SearchBar: UIViewRepresentable {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
         searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = "Type a song, artist, or album name..."
+        searchBar.placeholder = "곡, 가수, 앨범 명 검색"
+        // 한글로 변경?
+        // "Type a song, artist, or album name..."
         return searchBar
     }
     
