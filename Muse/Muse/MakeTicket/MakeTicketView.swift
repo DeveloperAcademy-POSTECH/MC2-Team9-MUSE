@@ -96,6 +96,8 @@ struct MakeTicketView: View {
                         }
                         .padding()
                         
+                        
+                        
                         Text("Comment")
                             .font(.subheadline)
                             .foregroundColor(.customGrey)
@@ -132,8 +134,9 @@ struct MakeTicketView: View {
                     .padding(.top, 5)
                     .frame(width: 286, height: 451)
                 }
+                .padding(.top, 27)
                 .padding(.horizontal)
-                    
+              
                 Button(action: {
                     print("작성 완료다잉")
                     makeViewModel.ticket.trackName = viewModel.trackName ?? ""
@@ -156,17 +159,17 @@ struct MakeTicketView: View {
                         }
                         else {
                             RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.customPink)
+                                .foregroundColor(Color.customPink)
                         }
                         
                         HStack(spacing: 5) {
                             Image("ticket icon")
                             Text("작성 완료")
+                                .font(.title3.bold())
+                                .foregroundColor(.white)
                         }
-                        .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
-                        .foregroundColor(Color.white)
-                        .padding()
                     }
+                    .frame(width: 350, height: 56)
                 })
                 .disabled(isbuttonActivated == false) // button default : 비활성화
                 .frame(width: 350, height: 56)
