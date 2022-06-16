@@ -19,7 +19,7 @@ class TicketWritingViewModel: ObservableObject {
 
 struct MakeTicketView: View {
     
-    @State private var makeViewModel = MakeTicketViewModelImpl(
+    @ObservedObject private var makeViewModel = MakeTicketViewModelImpl(
         service: MakeTicketServiceImpl()
     )
     
@@ -115,9 +115,6 @@ struct MakeTicketView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.customGrey)
                                     .padding(13)
-                                    .onTapGesture {
-                                        isbuttonActivated = true
-                                    }
                             }
                             TextEditor(text: $makeViewModel.ticket.comment)
                                 .font(.subheadline)
@@ -125,6 +122,9 @@ struct MakeTicketView: View {
                                 .lineSpacing(3)
                                 .padding(6)
                                 .disableAutocorrection(true)
+                                .onTapGesture {
+                                    isbuttonActivated = true
+                                }
                         }
                         .frame(width: 246, height: 160)
                         .cornerRadius(10)
