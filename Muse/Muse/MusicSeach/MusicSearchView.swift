@@ -16,6 +16,7 @@ struct MusicSearchView: View {
         //        NavigationView {
         VStack {
             SearchBar(searchTerm: $songListViewModel.searchTerm)
+                .padding(.horizontal)
             if songListViewModel.songs.isEmpty {
                 EmptyStateView()
             } else {
@@ -82,7 +83,7 @@ struct ArtworkView: View {
             }
         }
         .frame(width: 50, height: 50)
-        .shadow(radius: 5)
+//        .shadow(radius: 5)
         .padding(.trailing, 5)
     }
 }
@@ -92,17 +93,17 @@ struct EmptyStateView: View {
         VStack {
             Spacer()
             Image(systemName: "music.note.list")
-                .font(.system(size: 100))
+                .font(.system(size: 80))
                 .padding(.bottom)
                 .foregroundColor(Color.customPink)
             
-            Text("노래를 검색해주세요")
-                .font(.title)
+            Text("소개하고 싶은 음악을 \n검색해주세요")
+                .font(.title3)
                 .foregroundColor(Color.customPink)
             Spacer()
         }
         .padding()
-        .foregroundColor(Color(.systemIndigo))
+        .foregroundColor(.customPink)
     }
 }
 
@@ -116,7 +117,7 @@ struct SearchBar: UIViewRepresentable {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
         searchBar.searchBarStyle = .minimal
-        searchBar.placeholder = "곡, 가수, 앨범 명 검색"
+        searchBar.placeholder = "곡, 가수, 앨범명 등"
         // 한글로 변경?
         // "Type a song, artist, or album name..."
         return searchBar
@@ -143,8 +144,8 @@ struct SearchBar: UIViewRepresentable {
     }
 }
 
-//struct MusicSearchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MusicSearchView(songListViewModel: SongListViewModel(), ticketWritingViewModel: TicketWritingViewModel())
-//    }
-//}
+struct MusicSearchView_Previews: PreviewProvider {
+    static var previews: some View {
+        MusicSearchView(songListViewModel: SongListViewModel(), ticketWritingViewModel: TicketWritingViewModel())
+    }
+}

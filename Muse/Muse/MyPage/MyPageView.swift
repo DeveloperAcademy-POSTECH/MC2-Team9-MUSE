@@ -44,7 +44,7 @@ struct MyPageView: View {
                     service.logout()
                 }) {
                     Image(systemName: "rectangle.portrait.and.arrow.right")
-                        .font(.title)
+                        .font(.title2.bold())
                 }
 
                 NavigationLink(destination: MakeTicketView(isShowMakeTicketView: $isShowMakeTicketView), isActive: self.$isShowMakeTicketView) {

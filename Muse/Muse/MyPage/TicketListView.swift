@@ -28,15 +28,18 @@ struct TicketListView: View {
                                 // 곡 제목 - 가수 VStack
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text(ticketList)
-                                        .font(.title2)
+                                        .font(.title3)
                                         .fontWeight(.bold)
                                         .multilineTextAlignment(.leading)
                                         .lineLimit(1)
+                                        .padding(.top, 7)
                                     Text("이소라 \(number)")
                                         .font(.callout)
                                         .multilineTextAlignment(.leading)
                                         .lineLimit(1)
+//                                        .padding(.top, 7)
                                         .padding(.top, 3)
+                                        .foregroundColor(.gray)
                                 }
                                 Spacer()
                                 // 조건문으로 받아오는 데이터 타입에 따라(저장한 티켓에서는) 아래 내용 표시 X
@@ -50,10 +53,11 @@ struct TicketListView: View {
                             .foregroundColor(.black)
                         }
                     }
-                    .frame(width: 350, height: 100, alignment: .top)
+//                    .frame(width: 350, height: 100, alignment: .top)
+                    .frame(width: 350, height: 120, alignment: .top)
                     .background(Color.white)
                     .cornerRadius(15)
-                    .shadow(color: .gray.opacity(0.5), radius: 3)
+                    .shadow(color: .gray.opacity(0.5), radius: 2)
                 }
             }
             .padding(.top, 20)
