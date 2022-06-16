@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MainView: View {
-    
+    @State var offset: CGFloat = 0.0
+    @State var flag: Bool = false
     let screenSize: CGSize = UIScreen.main.bounds.size
     //@State var service = GetRandomTicketServiceImpl()
-    
-    @State private var songs: [TicketWritingViewModel] = []
+
     @State var randomSong: TicketWritingViewModel?
     @State var offset: CGFloat = 0.0
     
@@ -59,6 +59,7 @@ struct MainView: View {
                         
                         // 랜덤한 새로운 티켓을 다시 보여주는 코드를 짜야 합니다.
                         print("새 티켓 뽑기 동작")
+
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                             if offset == 500 {
                                 withAnimation {

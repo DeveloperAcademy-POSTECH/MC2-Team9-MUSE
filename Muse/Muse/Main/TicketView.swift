@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct Ticket: View {
 
     @Binding var randomSong: TicketWritingViewModel?
@@ -78,7 +79,7 @@ struct Ticket: View {
                         }
                     }
                     .offset(x:0, y:186.5)
-                    
+       
                 }
                 .offset(y: -500)
                 .animation(Animation.easeInOut(duration: 1.5), value: offset)
@@ -92,6 +93,7 @@ struct Ticket: View {
                 Image("machine2")
                     .offset(x:0, y:-327)
             }
+
 //            Button("눌러") {
 //                if offset == 500 {
 //                    offset = 0
@@ -102,6 +104,7 @@ struct Ticket: View {
 //                }
 //            }
         }
+
     }
 }
 

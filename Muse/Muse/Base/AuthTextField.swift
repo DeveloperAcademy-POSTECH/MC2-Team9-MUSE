@@ -16,20 +16,20 @@ struct AuthTextField: View {
     
     var body: some View {
         HStack{
-            Image(systemName: "heart")
-                .font(.system(size: 18, weight: .semibold))
-                .padding(.leading, 20)
-                .foregroundColor(.gray)
-            TextField("a", text: $text)
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(.red)
-                .padding(.leading, 10)
-                .frame(maxWidth: .infinity, minHeight: 50)
+            Image(systemName: sfSymbol)
+                .padding(.leading, 70)
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.gray)
+            TextField(placeholder, text: $text)
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.gray)
+                .frame(width: 246, height: 44, alignment: .center)
         }
         .overlay {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 100)
                 .stroke()
-                .foregroundColor(.blue)
+                .frame(width: 246, height: 44, alignment: .center)
+                .foregroundColor(Color.customPink)
         }
     }
 }
@@ -42,20 +42,19 @@ struct PwdTextFeild: View {
     
     var body: some View {
         HStack{
-            Image(systemName: "heart")
-                .font(.system(size: 18, weight: .semibold))
-                .padding(.leading, 20)
-                .foregroundColor(.gray)
-            SecureField("a", text: $password)
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(.red)
-                .padding(.leading, 10)
-                .frame(maxWidth: .infinity, minHeight: 50)
+            Image(systemName: sfSymbol)
+                .padding(.leading, 70)
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.gray)
+            SecureField(placeholder, text: $password)
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.gray)
+                .frame(width: 246, height: 44, alignment: .center)
         }
         .overlay {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke()
-                .foregroundColor(.blue)
+            RoundedRectangle(cornerRadius: 100).stroke()
+                .frame(width: 246, height: 44, alignment: .center)
+                .foregroundColor(Color.customPink)                
         }
     }
 }
