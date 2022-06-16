@@ -27,7 +27,7 @@ struct LoginView: View {
                 .padding(.bottom, -5)
             
             
-            Text("Our Music World,")
+            Text("Our Music Universe,")
                 .font(.body)
                 .fontWeight(.medium)
                 .padding(.bottom, -15)
