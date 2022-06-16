@@ -9,13 +9,13 @@ import SwiftUI
 
 
 struct Ticket: View {
-
+    
     @ObservedObject var randomSong: TicketWritingViewModel
     @Binding var offset: CGFloat
     
     var body: some View {
         VStack{
-        
+            
             ZStack{
                 TicketMachineView()
                 
@@ -31,7 +31,7 @@ struct Ticket: View {
                                 .font(.headline)
                                 .frame(width: 190, alignment: .leading)
                                 .offset(x:50,y:-180)
-                                
+                            
                             Text(randomSong.artistName )
                                 .font(.subheadline)
                                 .frame(width: 180, alignment: .leading)
@@ -40,7 +40,7 @@ struct Ticket: View {
                                 .background(Color.black)
                                 .frame(width: 250)
                                 .offset(x:-40,y:-150)
-
+                            
                         }
                     }
                     
@@ -65,7 +65,7 @@ struct Ticket: View {
                         }
                     }
                     .offset(x:0, y:186.5)
-       
+                    
                 }
                 .offset(y: -500)
                 .animation(Animation.easeInOut(duration: offset ==  500 ? 1.5 : 0.5), value: offset)
@@ -81,8 +81,8 @@ struct Ticket: View {
                 
                 VStack{
                     Text("Muse Ticket")
-                                        .font(.custom("Courier New", size: 34, relativeTo: .title)) //relativeTo : 모든 기기마다 title이 갖는 값을 기준으로 34를 변환 시킨다.
-                                        .padding()
+                        .font(.custom("Courier New", size: 34, relativeTo: .title)) //relativeTo : 모든 기기마다 title이 갖는 값을 기준으로 34를 변환 시킨다.
+                        .padding()
                     Spacer()
                 }
             }
@@ -90,17 +90,17 @@ struct Ticket: View {
                 .foregroundColor(.clear)
                 .frame(width: 180, height: 30, alignment: .center)
                 .hidden()
-//            Button("눌러") {
-//                if offset == 500 {
-//                    offset = 0
-//                }
-//                withAnimation {
-//                    offset += 500
-//                    //                  offset += (offset == 0) ? 500 : -500
-//                }
-//            }
+            //            Button("눌러") {
+            //                if offset == 500 {
+            //                    offset = 0
+            //                }
+            //                withAnimation {
+            //                    offset += 500
+            //                    //                  offset += (offset == 0) ? 500 : -500
+            //                }
+            //            }
         }
-
+        
     }
 }
 

@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseDatabase
+import Firebase
 import Combine
 
 // Create a protocol with the following
@@ -24,9 +25,16 @@ enum SessionState {
     case loggedOut
 }
 
-struct UserSessionDetails {
-    let nickName: String
-    let saveTrack: [String]
+class UserSessionDetails: Identifiable, ObservableObject {
+    @Published var nickName: String = ""
+    @Published var saveTrack: [String] = []
+    
+    init() {}
+    
+    init(data: [String: Any]) {
+        self.nickName = data["nickName"] as? String ?? ""
+        self.saveTrack = data["saveTrack"] as? [String] ?? ["a"]
+    }
 }
 
 protocol SessionService {
@@ -72,24 +80,17 @@ private extension SessionServiceImpl {
                 
                 if let uid = currentUser?.uid { // 현재 유저 있으면 아이디 받기
                     
-                    Database
-                        .database()
-                        .reference()
-                        .child("users")
-                        .child(uid)
-                        .observe(.value) { [weak self] snapshot in // user -> uid (현재 유저 id)에 해당하는 값 불러오기
-                            
-                            guard let self = self,
-                                  let value = snapshot.value as? NSDictionary, // snapshot 값 저장
-                                  let nickName = value[RegistrationKeys.nickName.rawValue] as? String, // 파베에서 불러온 값을 변수에 저장
-                                  let saveTrack = value[RegistrationKeys.saveTrack.rawValue] as? [String] else {
-                                return
-                            }
-
-                            DispatchQueue.main.async {
-                                self.userDetails = UserSessionDetails(nickName: nickName,  // 현재 로그인된 유저의 정보 업데이트
-                                                                      saveTrack: saveTrack)
-                            }
+                    FirebaseManager.shared.firestore
+                        .collection("users") //식별자인 title을 불러 온다.
+                        .document(uid)
+                        .addSnapshotListener { snapshot, error in // Fire base just let me do this!
+                            guard let snapshot = snapshot else { return }
+                            print("cccccccc")
+                            print(snapshot.data())
+                            self.userDetails = UserSessionDetails(data: snapshot.data()!)
+                            print("dddddddd")
+                            print(self.userDetails?.nickName)
+                            print(self.userDetails?.saveTrack)
                         }
                 }
             }
