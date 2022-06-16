@@ -11,16 +11,15 @@ struct MainView: View {
     let screenSize: CGSize = UIScreen.main.bounds.size
     //@State var service = GetRandomTicketServiceImpl()
 
-    @State var randomSong: TicketWritingViewModel?
+    @State var randomSong = TicketWritingViewModel()
     @State var offset: CGFloat = 0.0
+    
+    private let artworkLoader: ArtworkLoader = ArtworkLoader()
     
     var body: some View {
         ZStack {
             Color.bgGrey.edgesIgnoringSafeArea(.all)
             VStack (spacing: 0){
-                Text("Muse Ticket")
-                    .font(.custom("Courier New", size: 34, relativeTo: .title)) //relativeTo : 모든 기기마다 title이 갖는 값을 기준으로 34를 변환 시킨다.
-                    .padding()
                 
                 TicketMachineView()
                 
@@ -51,9 +50,13 @@ struct MainView: View {
                                     guard let snapshot = snapshot else { return }
                                     self.randomSong = snapshot.documents.map { document in
                                         return TicketWritingViewModel(data: document.data())
-                                    }.randomElement()
+                                    }.randomElement()!
                                     
-                                    // TicketView 띄우기
+                                    self.artworkLoader.loadArtwork(forSong: randomSong.artworkUrl ) { image in
+                                            print("in")
+                                            print(randomSong.artworkUrl)
+                                            randomSong.artwork = image
+                                    }
                                 }
                         }
                         
@@ -64,15 +67,17 @@ struct MainView: View {
                             withAnimation {
                                 offset -= 500
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {//.milliseconds(1500)) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                 withAnimation {
                                     offset += 500
                                 }
                             }
                             
                         } else {
-                            withAnimation {
-                                offset += 500
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                withAnimation {
+                                    offset += 500
+                                }
                             }
                         }
                     }, label: {
@@ -97,15 +102,29 @@ struct MainView: View {
             //                   artist: $artist,
             //                   comment: $comment,
             //                   artworkUrl: $artworkUrl)
-            Ticket(randomSong: $randomSong, offset: $offset)
+            Ticket(randomSong: randomSong, offset: $offset)
+            
+//            Button {
+//                print(randomSong?.artworkUrl as Any)
+//            } label: {
+//                ArtworkView(image: randomSong?.artwork)
+//                    .frame(width: 66, height: 66)
+//                    .overlay {
+//                        Rectangle()
+//                            .stroke()
+//                            .foregroundColor(.red)
+//                            .frame(width: 150, height: 150, alignment: .center)
+//                    }
+//            }
+
         }
         .navigationBarHidden(true)
         .navigationTitle("Muse Ticket")
     }
 }
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+//
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView()
+//    }
+//}

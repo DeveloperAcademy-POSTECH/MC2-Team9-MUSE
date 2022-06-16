@@ -10,29 +10,8 @@ import SwiftUI
 
 struct Ticket: View {
 
-    @Binding var randomSong: TicketWritingViewModel?
+    @ObservedObject var randomSong: TicketWritingViewModel
     @Binding var offset: CGFloat
-
-
-    //    @Binding var trackName: String
-    //    @Binding var artist: String
-    //    @Binding var comment: String
-    //    @Binding var artworkUrl: Stri
-    //
-    
-//
-//    HStack {
-//        ArtworkView(image: song.artwork)
-//            .padding(.trailing)
-//        VStack(alignment: .leading) {
-//            Text(song.trackName)
-//            Text(song.artistName)
-//                .font(.footnote)
-//                .foregroundColor(.gray)
-//        }
-//    }
-//    .padding()
-//
     
     var body: some View {
         VStack{
@@ -43,25 +22,32 @@ struct Ticket: View {
                 ZStack{
                     Image("ticket")
                     HStack{
-                        Image("Album")
-                            .resizable()
+                        ArtworkView(image: randomSong.artwork)
                             .frame(width: 66, height: 66)
                             .offset(x:40,y:-180)
+                        
                         VStack(alignment: .leading){
-                            Text(randomSong?.trackName ?? "")
+                            Text(randomSong.trackName )
                                 .font(.headline)
+                                .frame(width: 190, alignment: .leading)
                                 .offset(x:50,y:-180)
-                            Text(randomSong?.artistName ?? "")
+                                
+                            Text(randomSong.artistName )
+                                .font(.subheadline)
+                                .frame(width: 180, alignment: .leading)
                                 .offset(x:50,y:-170)
                             Divider()
                                 .background(Color.black)
                                 .frame(width: 250)
                                 .offset(x:-40,y:-150)
+
                         }
                     }
                     
                     ScrollView{
-                        Text(randomSong?.comment ?? "")
+                        Text(randomSong.comment )
+                            .font(.subheadline)
+                            .frame(width: 235, alignment: .leading)
                     }
                     .frame(width: 260, height: 200)
                     
