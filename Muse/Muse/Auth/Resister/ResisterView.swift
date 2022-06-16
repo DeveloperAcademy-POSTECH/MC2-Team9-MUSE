@@ -32,26 +32,28 @@ struct RegisterView: View {
                 .font(.system(size: 15, weight: .regular))
                 .foregroundColor(Color.black)
                 .frame(width: 246, height: 44, alignment: .leading)
-                .padding(.bottom, -30)
+                .padding(.bottom, -22)
                 .padding(.top, 30)
             
             AuthTextField(text: $viewModel.newUser.email,
                           placeholder: "omu@naver.com",
                           keyboardType: .emailAddress,
                           sfSymbol: "envelope")
+            .padding(.top, -15)
             
             Text("비밀번호")
                 .font(.system(size: 15, weight: .regular))
                 .foregroundColor(Color.black)
                 .frame(width: 246, height: 44, alignment: .leading)
                 .padding(.bottom, -30)
-                .padding(.top, -20)
+                .padding(.top, -30)
             
             PwdTextFeild(password: $viewModel.newUser.password,
                          placeholder: "6자리 이상 입력해주세요",
                          sfSymbol: "lock")
+            .padding(.top, -23)
             
-            VStack(spacing:15){
+            VStack(spacing: 10){
                 
                 AuthButton(title: "가입하기",
                            background: .customPink,
@@ -79,7 +81,6 @@ struct RegisterView: View {
                             .foregroundColor(Color.gray)
                     }
                 }
-                
                 
             }
         }

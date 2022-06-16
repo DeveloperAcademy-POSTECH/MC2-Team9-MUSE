@@ -31,7 +31,6 @@ struct AuthTextField: View {
                 .frame(width: 246, height: 44, alignment: .center)
                 .foregroundColor(Color.customPink)
         }
-        .padding(.bottom, -5)
     }
 }
 
@@ -57,7 +56,6 @@ struct PwdTextFeild: View {
                 .frame(width: 246, height: 44, alignment: .center)
                 .foregroundColor(Color.customPink)                
         }
-        .padding(.bottom, 20)
     }
 }
 

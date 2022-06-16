@@ -41,7 +41,6 @@ struct AuthButton: View {
                 .stroke(border, lineWidth: 2)
                 .frame(width: 246, height: 44, alignment: .center)
         }
-        .padding(.top, -15)
     }
 }
 
