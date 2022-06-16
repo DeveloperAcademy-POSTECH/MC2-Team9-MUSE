@@ -24,7 +24,6 @@ struct LoginView: View {
                 .frame(width: 166, height: 51, alignment: .center)
                 .padding()
                 .padding(.top, -30)
-                .padding(.bottom, -5)
             
             
             Text("Our Music Universe,")
@@ -42,10 +41,12 @@ struct LoginView: View {
                           placeholder: "이메일을 입력해주세요",
                           keyboardType: .emailAddress,
                           sfSymbol: "envelope")
+            .padding(.bottom, -5)
             
             PwdTextFeild(password: $viewModel.credentials.password,
                          placeholder: "비밀번호를 입력해주세요",
                          sfSymbol: "lock")
+            .padding(.bottom, 10)
             
             AuthButton(title: "로그인",
                        background: .customPink,
@@ -53,6 +54,7 @@ struct LoginView: View {
                        border: .white) {
                 viewModel.login()
             }
+                       .padding(.bottom, -10)
             
             HStack{
                 // 기존의 회원가입 버튼을 text로 변경
@@ -94,7 +96,7 @@ struct LoginView: View {
 }
 
 struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {        
+    static var previews: some View {
         LoginView()
     }
 }
