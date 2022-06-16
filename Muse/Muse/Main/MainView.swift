@@ -10,8 +10,8 @@ import FirebaseAuth
 
 struct MainView: View {
     let screenSize: CGSize = UIScreen.main.bounds.size
-    //@State var service = GetRandomTicketServiceImpl()
 
+    @EnvironmentObject var service: SessionServiceImpl
     @State var randomSong = TicketWritingViewModel()
     @State var offset: CGFloat = 0.0
     @State var isSaveActivated = false
@@ -30,7 +30,7 @@ struct MainView: View {
                     
                     Button(action: {
 //
-//                        let currentUser = Auth.auth().currentUser
+                        let currentUser = Auth.auth().currentUser
                         withAnimation {
                             offset -= 500
                         }
@@ -40,15 +40,16 @@ struct MainView: View {
                                 .document(String(randomSong.musicId))
                                 .updateData(["downloadNum" : randomSong.downloadNum + 1])
                         }
-//                            .
-//                            .document() //firebase에 있는 track이 document부분!
-//
-//                        let data = ["trackName": ]
-//
-//                        document.setData(
-//
-                        //티켓 저장 하는 코드를 짜야합니다.
-                        print("티켓 저장 동작")
+                        print(service.userDetails?.saveTrack)
+                            service.userDetails?.saveTrack.append(String(randomSong.musicId))
+                        
+                        print(service.userDetails?.saveTrack)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            FirebaseManager.shared.firestore
+                                .collection("users")
+                                .document(currentUser!.uid)
+                                .updateData(["saveTrack" : service.userDetails?.saveTrack])
+                        }
                         
                         isSaveActivated = false
                         
@@ -89,6 +90,15 @@ struct MainView: View {
                                             randomSong.artwork = image
                                     }
                                 }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                                if (service.userDetails?.saveTrack.contains(String(randomSong.musicId))) ?? true {
+                                    isSaveActivated = false
+                                } else {
+                                    isSaveActivated = true
+                                }
+                            }
+                            
                         }
                         
                         // 랜덤한 새로운 티켓을 다시 보여주는 코드를 짜야 합니다.
@@ -111,8 +121,6 @@ struct MainView: View {
                                 }
                             }
                         }
-                        
-                        isSaveActivated = true
                         
                     }, label: {
                         ZStack {

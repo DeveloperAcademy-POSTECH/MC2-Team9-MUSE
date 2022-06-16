@@ -28,6 +28,7 @@ class TicketWritingViewModel: Identifiable, ObservableObject{
             self.musicId = data["musicId"] as? Int ?? 0
             self.downloadNum = data["downloadNum"] as? Int ?? 0
             self.comment = data["comment"] as? String ?? "ErrorComment"
+            self.writer = data["writer"] as? String ?? ""
             //data안에 title/document가 있으면 string으로 인식 하고 아닐 경우 에러메시지를 띄워주세용
     }
 
