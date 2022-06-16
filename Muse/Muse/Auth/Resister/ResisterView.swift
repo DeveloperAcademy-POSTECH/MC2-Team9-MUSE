@@ -23,7 +23,7 @@ struct RegisterView: View {
                 .frame(width: 107, height: 33, alignment: .center)
                 .padding(.bottom, -10)
             
-            Text("회원가입")
+            Text("회원 가입")
                 .frame(width: 348, height: 41, alignment: .center)
                 .font(.system(size: 34, weight: .bold))
                 
@@ -31,7 +31,7 @@ struct RegisterView: View {
             Text("이메일")
                 .font(.system(size: 15, weight: .regular))
                 .foregroundColor(Color.black)
-                .frame(width: 246, height: 44, alignment: .leading)
+                .frame(width: 286, height: 44, alignment: .leading)
                 .padding(.bottom, -22)
                 .padding(.top, 30)
             
@@ -44,7 +44,7 @@ struct RegisterView: View {
             Text("비밀번호")
                 .font(.system(size: 15, weight: .regular))
                 .foregroundColor(Color.black)
-                .frame(width: 246, height: 44, alignment: .leading)
+                .frame(width: 286, height: 44, alignment: .leading)
                 .padding(.bottom, -30)
                 .padding(.top, -30)
             
@@ -69,15 +69,17 @@ struct RegisterView: View {
                 } label: {
                     HStack{
                         Text("괜찮아요, 다음에 할게요")
-                            .frame(width: 246, height: 44, alignment: .center)
-                            .font(.system(size: 13, weight: .regular))
+                            .frame(width: 286, height: 44, alignment: .center)
+//                            .font(.system(size: 13, weight: .regular))
+                            .font(.body)
                             .foregroundColor(Color.gray)
                             .padding(.leading, 20)
                     }
                     .overlay{
-                        RoundedRectangle(cornerRadius: 100)
+//                        RoundedRectangle(cornerRadius: 100)
+                        Capsule()
                             .stroke()
-                            .frame(width: 246, height: 44, alignment: .center)
+                            .frame(width: 286, height: 44, alignment: .center)
                             .foregroundColor(Color.gray)
                     }
                 }
