@@ -43,9 +43,9 @@ struct RegisterView: View {
             }
             
             AuthButton(title: "Sign Up",
-                       background: .clear,
-                       foreground: .blue,
-                       border: .blue) {
+                       background: .customPink,
+                       foreground: .white,
+                       border: .customPink) {
                 viewModel.create()
             }
         }
