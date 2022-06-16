@@ -51,7 +51,7 @@ struct RegisterView: View {
                          placeholder: "6자리 이상 입력해주세요",
                          sfSymbol: "lock")
             
-            VStack(spacing:10){
+            VStack(spacing:15){
                 
                 AuthButton(title: "가입하기",
                            background: .customPink,
@@ -59,7 +59,7 @@ struct RegisterView: View {
                            border: .customPink) {
                     viewModel.create()
                 }
-                           .padding(.top, 30)
+                           .padding(.top, 20)
                 
                 
                 Button {
