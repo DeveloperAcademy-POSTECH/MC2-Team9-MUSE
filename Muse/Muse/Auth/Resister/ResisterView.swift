@@ -17,12 +17,6 @@ struct RegisterView: View {
     
     var body: some View {
         VStack(spacing: 32) {
-            VStack(spacing: 16) {
-                
-                AuthTextField(text: $viewModel.newUser.nickName,
-                              placeholder: "First Name",
-                              keyboardType: .namePhonePad,
-                              sfSymbol: "lock")
                 
                 AuthTextField(text: $viewModel.newUser.email,
                               placeholder: "Email",
@@ -32,21 +26,31 @@ struct RegisterView: View {
                 PwdTextFeild(password: $viewModel.newUser.password,
                              placeholder: "Password",
                              sfSymbol: "lock")
-                
-                Divider()
-                
-                Button {
-                    presenationMode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "xmark")
-                }
-            }
             
             AuthButton(title: "Sign Up",
                        background: .customPink,
                        foreground: .white,
                        border: .customPink) {
                 viewModel.create()
+            }
+            
+            
+            Button {
+                presenationMode.wrappedValue.dismiss()
+            } label: {
+                HStack{
+                    Text("괜찮아요, 다음에 할게요")
+                        .frame(width: 246, height: 44, alignment: .center)
+                        .font(.system(size: 13, weight: .regular))
+                        .foregroundColor(Color.gray)
+                        .padding(.leading, 20)
+                }
+                .overlay{
+                    RoundedRectangle(cornerRadius: 100)
+                        .stroke()                    
+                        .frame(width: 246, height: 44, alignment: .center)
+                        .foregroundColor(Color.gray)
+                }                
             }
         }
         .padding(.horizontal, 15)
