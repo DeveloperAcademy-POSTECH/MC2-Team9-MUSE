@@ -90,6 +90,15 @@ struct MainView: View {
                                             randomSong.artwork = image
                                     }
                                 }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                                if (service.userDetails?.saveTrack.contains(String(randomSong.musicId))) ?? true {
+                                    isSaveActivated = false
+                                } else {
+                                    isSaveActivated = true
+                                }
+                            }
+                            
                         }
                         
                         // 랜덤한 새로운 티켓을 다시 보여주는 코드를 짜야 합니다.
@@ -112,8 +121,6 @@ struct MainView: View {
                                 }
                             }
                         }
-                        
-                        isSaveActivated = true
                         
                     }, label: {
                         ZStack {
