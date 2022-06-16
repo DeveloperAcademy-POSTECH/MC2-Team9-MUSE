@@ -80,8 +80,31 @@ struct MyPageView: View {
         .navigationTitle("내 라이브러리")
         .background(Color.bgGrey.edgesIgnoringSafeArea(.all))
         .onAppear {
-
-                
+            wroteTickets.removeAll()
+            savedTickets.removeAll()
+            let uid = Auth.auth().currentUser?.uid
+            print(uid!)
+            
+            FirebaseManager.shared.firestore
+                .collection("tracks") //식별자인 title을 불러 온다.
+                .addSnapshotListener { snapshot, error in // Fire base just let me do this!
+                    guard let snapshot = snapshot else { return }
+                    
+                    snapshot.documents.forEach { document in // Fire base just let me do this!
+                        let song = TicketWritingViewModel(data: document.data())
+  
+                        if uid == song.writer {
+                            wroteTickets.append(song)
+                        }
+                        if (service.userDetails?.saveTrack.contains(String(song.musicId))) ?? true {
+                            savedTickets.append(song)
+                        }
+                    }
+                    print("ticket1")
+                    print(savedTickets)
+                    print("ticket2")
+                    print(wroteTickets)
+                }
         }
     }
 }
