@@ -26,15 +26,17 @@ struct LoginView: View {
                 .padding(.top, -30)
             
             
-            Text("Our Music Universe,")
-                .font(.body)
-                .fontWeight(.medium)
-                .padding(.bottom, -15)
-            
-            Text("오뮤에 오신 걸 환영합니다.")
+            Text("Our Music Universe,\n 오뮤에 오신 것을 환영합니다.")
                 .font(.body)
                 .fontWeight(.medium)
                 .padding(.bottom, 60)
+                .multilineTextAlignment(.center)
+                .lineSpacing(3)
+            
+//            Text("오뮤에 오신 걸 환영합니다.")
+//                .font(.body)
+//                .fontWeight(.medium)
+//                .padding(.bottom, 60)
             
             
             AuthTextField(text: $viewModel.credentials.email,
@@ -73,7 +75,7 @@ struct LoginView: View {
                     .sheet(isPresented: $showRegistration) {
                         RegisterView()
                     }
-            }.frame(width: 230, height: 20, alignment: .trailing)
+            }.frame(width: 270, height: 20, alignment: .trailing)
             
         }
         .padding(.horizontal, 15)

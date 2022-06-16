@@ -18,17 +18,21 @@ struct AuthTextField: View {
         HStack{
             Image(systemName: sfSymbol)
                 .padding(.leading, 70)
-                .font(.system(size: 13, weight: .regular))
+//                .font(.system(size: 13, weight: .regular))
+                .font(.subheadline)
                 .foregroundColor(Color.gray)
             TextField(placeholder, text: $text)
-                .font(.system(size: 13, weight: .regular))
+//                .font(.system(size: 13, weight: .regular))
+                .font(.subheadline)
                 .foregroundColor(Color.gray)
-                .frame(width: 246, height: 44, alignment: .center)
+                .frame(width: 286, height: 44, alignment: .center)
+                .keyboardType(.emailAddress)
         }
         .overlay {
-            RoundedRectangle(cornerRadius: 100)
+//            RoundedRectangle(cornerRadius: 100)
+            Capsule()
                 .stroke()
-                .frame(width: 246, height: 44, alignment: .center)
+                .frame(width: 286, height: 44, alignment: .center)
                 .foregroundColor(Color.customPink)
         }
     }
@@ -44,16 +48,20 @@ struct PwdTextFeild: View {
         HStack{
             Image(systemName: sfSymbol)
                 .padding(.leading, 70)
-                .font(.system(size: 13, weight: .regular))
+//                .font(.system(size: 13, weight: .regular))
+                .font(.subheadline)
                 .foregroundColor(Color.gray)
             SecureField(placeholder, text: $password)
-                .font(.system(size: 13, weight: .regular))
+//                .font(.system(size: 13, weight: .regular))
+                .font(.subheadline)
                 .foregroundColor(Color.gray)
-                .frame(width: 246, height: 44, alignment: .center)
+                .frame(width: 286, height: 44, alignment: .center)
         }
         .overlay {
-            RoundedRectangle(cornerRadius: 100).stroke()
-                .frame(width: 246, height: 44, alignment: .center)
+//            RoundedRectangle(cornerRadius: 100)
+            Capsule()
+                .stroke()
+                .frame(width: 286, height: 44, alignment: .center)
                 .foregroundColor(Color.customPink)                
         }
     }
