@@ -5,39 +5,46 @@
 //  Created by kwon ji won on 2022/06/14.
 //
 import SwiftUI
+
 struct MusicSearchView: View {
     @ObservedObject var songListViewModel: SongListViewModel
     var ticketWritingViewModel: TicketWritingViewModel
     //네비게이션 뷰를 지우기 위한 환경설정
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-//        NavigationView {
-            VStack {
-                SearchBar(searchTerm: $songListViewModel.searchTerm)
-                if songListViewModel.songs.isEmpty {
-                    EmptyStateView()
-                } else {
+        //        NavigationView {
+        VStack {
+            SearchBar(searchTerm: $songListViewModel.searchTerm)
+            if songListViewModel.songs.isEmpty {
+                EmptyStateView()
+            } else {
                 List(songListViewModel.songs) { song in
-                    SongView(song: song)
-                        .onTapGesture {
-                            self.ticketWritingViewModel.artwork = song.artwork
-                            self.ticketWritingViewModel.artworkUrl = song.artworkUrl
-                            self.ticketWritingViewModel.id = song.id
-                            self.ticketWritingViewModel.trackName = song.trackName
-                            self.ticketWritingViewModel.artistName = song.artistName
-                            self.presentationMode.wrappedValue.dismiss()
-
-                        }
-
+                    Button {
+                        dismiss()
+                        self.ticketWritingViewModel.artwork = song.artwork
+                        self.ticketWritingViewModel.artworkUrl = song.artworkUrl
+                        self.ticketWritingViewModel.musicId = song.id
+                        self.ticketWritingViewModel.trackName = song.trackName
+                        self.ticketWritingViewModel.artistName = song.artistName
+                        
+                    } label: {
+                        SongView(song: song)
+                        //                        .onTapGesture {
+                        
+                        //                            self.presentationMode2.wrappedValue.dismiss()
+                        
+                        //                        }
+                    }
+                    
                 }
                 .listStyle(PlainListStyle())
-                }
             }
-            .navigationBarTitle("Music Search")
-            //      .navigationBarHidden(true)
-            //      .ignoresSafeArea()
-//        }
+        }
+        .navigationBarTitle("Music Search")
+        //      .navigationBarHidden(true)
+        //      .ignoresSafeArea()
+        //        }
     }
 }
 
@@ -68,10 +75,10 @@ struct ArtworkView: View {
                 image
             } else {
                 Image("")
-//                Color(.systemIndigo)
-//                Image(systemName: "music.note")
-//                    .font(.largeTitle)
-//                    .foregroundColor(.white)
+                //                Color(.systemIndigo)
+                //                Image(systemName: "music.note")
+                //                    .font(.largeTitle)
+                //                    .foregroundColor(.white)
             }
         }
         .frame(width: 50, height: 50)

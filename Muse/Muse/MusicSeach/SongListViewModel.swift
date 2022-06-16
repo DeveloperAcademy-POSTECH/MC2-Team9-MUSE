@@ -42,7 +42,7 @@ class SongListViewModel: ObservableObject {
             self.songs.append(songViewModel)
         }
         
-        artworkLoader.loadArtwork(forSong: song) { image in
+        artworkLoader.loadArtwork(forSong: song.artworkUrl) { image in
             DispatchQueue.main.async {
                 songViewModel.artwork = image
             }
