@@ -11,20 +11,22 @@ import Firebase
 import FirebaseDatabase
 
 enum LibraryType: String, CaseIterable {
-    case myTicket = "나의 음악 티켓"
-    case saved = "저장한 티켓"
+    case myTicket = "저장한 티켓"
+    case saved = "나의 음악 티켓"
 }
 
 // 선택된 segmentedPicker에 따라 TicketListView 표시
 struct ChosenView: View {
     var selectedSide: LibraryType
+    @Binding var saved: [TicketWritingViewModel]
+    @Binding var wrote: [TicketWritingViewModel]
     
     var body: some View {
         switch selectedSide {
         case .myTicket:
-            TicketListView(ticketList: "바람이 분다", isMyTicket: true)
+            TicketListView(isMyTicket: true, tickets: $saved)
         case .saved:
-            TicketListView(ticketList: "1월에서 6월까지", isMyTicket: false)
+            TicketListView(isMyTicket: false, tickets: $wrote)
         }
     }
 }
@@ -35,8 +37,8 @@ struct MyPageView: View {
     @EnvironmentObject var service: SessionServiceImpl
     @State private var selectedSide: LibraryType = .myTicket
     
-    @State private var savedTickets: [TicketWritingViewModel] = []
-    @State private var wroteTickets: [TicketWritingViewModel] = []
+    @State var savedTickets: [TicketWritingViewModel] = []
+    @State var wroteTickets: [TicketWritingViewModel] = []
     
     var body: some View {
         VStack(spacing: 0) {
@@ -45,7 +47,7 @@ struct MyPageView: View {
                 Text("내 라이브러리")
                     .font(.title)
                     .fontWeight(.bold)
-//                Text(service.userDetails.)
+                //                Text(service.userDetails.)
                 Spacer()
                 Button(action: {
                     service.logout()
@@ -72,48 +74,14 @@ struct MyPageView: View {
             .pickerStyle(SegmentedPickerStyle())
             .padding()
             
-            ChosenView(selectedSide: selectedSide)
+            ChosenView(selectedSide: selectedSide, saved: $savedTickets, wrote: $wroteTickets)
         }
         .navigationBarHidden(true)
         .navigationTitle("내 라이브러리")
         .background(Color.bgGrey.edgesIgnoringSafeArea(.all))
         .onAppear {
-//            let uid = Auth.auth().currentUser?.uid
-//            
-//            
-//            FirebaseManager.shared.firestore
-//                .collection("tracks") //식별자인 title을 불러 온다.
-//                .addSnapshotListener { snapshot, error in // Fire base just let me do this!
-//                    guard let snapshot = snapshot else { return }
-////                    snapshot.documents.forEach { document in // Fire base just let me do this!
-////                        let song = TicketWritingViewModel(data: document.data())
-////                        if uid == song.writer {
-////                            wroteTickets.append(song)
-////                        }
-////                        if ((service.userDetails?.saveTrack.contains(String(song.musicId))) != nil) {
-////                            savedTickets.append(song)
-////                        }
-////                    }
-//                }
-//            
-//            let values = [RegistrationKeys.nickName.rawValue: service.userDetails!.nickName,
-//                          RegistrationKeys.saveTrack.rawValue: savedTickets] as [String : Any]
-//            
-////            Database
-////                .database()
-////                .reference()
-////                .child("users")
-////                .child(uid!)
-////                .updateChildValues(values)
-//            
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-//                print("ticket1")
-//                print(savedTickets)
-//                print("ticket2")
-//                print(wroteTickets)
-//            }
-            
-            
+
+                
         }
     }
 }

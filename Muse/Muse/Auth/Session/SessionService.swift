@@ -85,12 +85,7 @@ private extension SessionServiceImpl {
                         .document(uid)
                         .addSnapshotListener { snapshot, error in // Fire base just let me do this!
                             guard let snapshot = snapshot else { return }
-                            print("cccccccc")
-                            print(snapshot.data())
                             self.userDetails = UserSessionDetails(data: snapshot.data()!)
-                            print("dddddddd")
-                            print(self.userDetails?.nickName)
-                            print(self.userDetails?.saveTrack)
                         }
                 }
             }
