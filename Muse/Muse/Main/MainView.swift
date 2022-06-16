@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    
+    @State var offset: CGFloat = 0.0
+    @State var flag: Bool = false
     let screenSize: CGSize = UIScreen.main.bounds.size
     
     var body: some View {
@@ -19,7 +20,7 @@ struct MainView: View {
                     .font(.custom("Courier New", size: 34, relativeTo: .title)) //relativeTo : 모든 기기마다 title이 갖는 값을 기준으로 34를 변환 시킨다.
                     .padding()
                 
-                TicketMachineView()
+                TicketMachineView(flag: $flag, offset: $offset)
     
                 HStack(alignment: .center, spacing: 20) {
                     Button(action: {
@@ -43,6 +44,10 @@ struct MainView: View {
                     Button(action: {
                         // 랜덤한 새로운 티켓을 다시 보여주는 코드를 짜야 합니다.
                         print("새 티켓 뽑기 동작")
+                        self.flag = true
+                        withAnimation {
+                            offset += 500
+                        }
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
