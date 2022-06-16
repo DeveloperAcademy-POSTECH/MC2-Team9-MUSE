@@ -157,7 +157,7 @@ struct MakeTicketView: View {
                     
                     let document = FirebaseManager.shared.firestore
                         .collection("tracks")
-                        .document() //firebase에 있는 track이 document부분!
+                        .document(String(viewModel.musicId)) //firebase에 있는 track이 document부분!
                     
                     let data = ["trackName": viewModel.trackName,
                                 "artistName": viewModel.artistName,

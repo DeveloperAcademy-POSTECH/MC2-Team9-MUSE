@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct MainView: View {
     let screenSize: CGSize = UIScreen.main.bounds.size
@@ -13,6 +14,8 @@ struct MainView: View {
 
     @State var randomSong = TicketWritingViewModel()
     @State var offset: CGFloat = 0.0
+    @State var isSaveActivated = false
+    @State var isNewActivated = false
     
     private let artworkLoader: ArtworkLoader = ArtworkLoader()
     
@@ -24,13 +27,35 @@ struct MainView: View {
                 Spacer()
                 
                 HStack(alignment: .center, spacing: 20) {
+                    
                     Button(action: {
+//
+//                        let currentUser = Auth.auth().currentUser
+                        withAnimation {
+                            offset -= 500
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            FirebaseManager.shared.firestore
+                                .collection("tracks")
+                                .document(String(randomSong.musicId))
+                                .updateData(["downloadNum" : randomSong.downloadNum + 1])
+                        }
+//                            .
+//                            .document() //firebase에 있는 track이 document부분!
+//
+//                        let data = ["trackName": ]
+//
+//                        document.setData(
+//
                         //티켓 저장 하는 코드를 짜야합니다.
                         print("티켓 저장 동작")
+                        
+                        isSaveActivated = false
+                        
                     }, label: {
                         ZStack {
                             Capsule()
-                                .fill(Color.customGrey)
+                                .fill(isSaveActivated == true ? Color.customNavy : Color.customGrey)
                                 .frame(width: 160, height: 46)
                             HStack(spacing: 5) {
                                 Image(systemName: "square.and.arrow.down")
@@ -44,6 +69,7 @@ struct MainView: View {
                         .padding(.leading, 7)
                         .padding(.top, 5)
                     })
+                    .disabled(isSaveActivated == false)
                     .frame(width: 165, height: 56)
                     
                     Button(action: {
@@ -52,6 +78,7 @@ struct MainView: View {
                                 .collection("tracks") //식별자인 title을 불러 온다.
                                 .addSnapshotListener { snapshot, error in // Fire base just let me do this!
                                     guard let snapshot = snapshot else { return }
+
                                     self.randomSong = snapshot.documents.map { document in
                                         return TicketWritingViewModel(data: document.data())
                                     }.randomElement()!
@@ -84,6 +111,9 @@ struct MainView: View {
                                 }
                             }
                         }
+                        
+                        isSaveActivated = true
+                        
                     }, label: {
                         ZStack {
                             Capsule()
