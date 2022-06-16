@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TicketMachineView: View {
+    @Binding var flag: Bool
+    @Binding var offset: CGFloat
+    
     var body: some View {
         ZStack {
             Image("machine")
@@ -35,6 +38,9 @@ struct TicketMachineView: View {
                 .foregroundColor(Color(red: 153/255, green: 153/255, blue: 153/255))
                 .multilineTextAlignment(.center)
             }
+            if flag {
+                TicketView(offset: $offset)
+            }
         }
         .padding(.horizontal)
     }
@@ -42,6 +48,6 @@ struct TicketMachineView: View {
 
 struct TicketMachineView_Previews: PreviewProvider {
     static var previews: some View {
-        TicketMachineView()
+        TicketMachineView(flag: .constant(true), offset: .constant(0.0))
     }
 }
