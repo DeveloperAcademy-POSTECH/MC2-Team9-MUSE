@@ -82,7 +82,7 @@ struct Ticket: View {
        
                 }
                 .offset(y: -500)
-                .animation(Animation.easeInOut(duration: 1.5), value: offset)
+                .animation(Animation.easeInOut(duration: offset ==  500 ? 1.5 : 0.5), value: offset)
                 .offset(y: offset)
                 
                 Rectangle()
