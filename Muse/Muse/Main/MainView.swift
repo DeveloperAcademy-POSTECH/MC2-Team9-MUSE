@@ -21,7 +21,7 @@ struct MainView: View {
             Color.bgGrey.edgesIgnoringSafeArea(.all)
             VStack (spacing: 0){
                 
-                TicketMachineView()
+                Spacer()
                 
                 HStack(alignment: .center, spacing: 20) {
                     Button(action: {
@@ -29,16 +29,20 @@ struct MainView: View {
                         print("티켓 저장 동작")
                     }, label: {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 20)
+                            Capsule()
                                 .fill(Color.customGrey)
+                                .frame(width: 160, height: 46)
                             HStack(spacing: 5) {
                                 Image(systemName: "square.and.arrow.down")
+                                    .padding(.trailing, 7)
                                 Text("티켓 저장")
                             }
                             .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
                             .foregroundColor(Color.white)
                             .padding()
                         }
+                        .padding(.leading, 7)
+                        .padding(.top, 5)
                     })
                     .frame(width: 165, height: 56)
                     
@@ -82,44 +86,32 @@ struct MainView: View {
                         }
                     }, label: {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 20)
+                            Capsule()
                                 .fill(Color.customPink)
+                                .frame(width: 160, height: 46)
                             HStack(spacing: 5) {
                                 Image(systemName: "arrow.triangle.2.circlepath")
-                                Text("새 티켓 뽑기")
+                                    .padding(.trailing, 7)
+                                Text("티켓 뽑기")
                             }
                             .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
                             .foregroundColor(Color.white)
                             .padding()
-                            
                         }
+                        .padding(.trailing, 7)
+                        .padding(.top, 5)
                     })
                     .frame(width: 165, height: 56)
                 }
+                .foregroundColor(.red)
+                .frame(width: 180, height: 70, alignment: .center)
                 .padding()
             }
-            //            Ticket(trackName: $trackName,
-            //                   artist: $artist,
-            //                   comment: $comment,
-            //                   artworkUrl: $artworkUrl)
-            Ticket(randomSong: randomSong, offset: $offset)
             
-//            Button {
-//                print(randomSong?.artworkUrl as Any)
-//            } label: {
-//                ArtworkView(image: randomSong?.artwork)
-//                    .frame(width: 66, height: 66)
-//                    .overlay {
-//                        Rectangle()
-//                            .stroke()
-//                            .foregroundColor(.red)
-//                            .frame(width: 150, height: 150, alignment: .center)
-//                    }
-//            }
+            Ticket(randomSong: randomSong, offset: $offset)
 
         }
         .navigationBarHidden(true)
-        .navigationTitle("Muse Ticket")
     }
 }
 //

@@ -17,7 +17,7 @@ struct Ticket: View {
         VStack{
         
             ZStack{
-                Image("machine")
+                TicketMachineView()
                 
                 ZStack{
                     Image("ticket")
@@ -46,7 +46,7 @@ struct Ticket: View {
                     
                     ScrollView{
                         Text(randomSong.comment )
-                            .font(.subheadline)
+                            .font(.callout)
                             .frame(width: 235, alignment: .leading)
                     }
                     .frame(width: 260, height: 200)
@@ -78,8 +78,18 @@ struct Ticket: View {
                 
                 Image("machine2")
                     .offset(x:0, y:-327)
+                
+                VStack{
+                    Text("Muse Ticket")
+                                        .font(.custom("Courier New", size: 34, relativeTo: .title)) //relativeTo : 모든 기기마다 title이 갖는 값을 기준으로 34를 변환 시킨다.
+                                        .padding()
+                    Spacer()
+                }
             }
-
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(width: 180, height: 30, alignment: .center)
+                .hidden()
 //            Button("눌러") {
 //                if offset == 500 {
 //                    offset = 0
