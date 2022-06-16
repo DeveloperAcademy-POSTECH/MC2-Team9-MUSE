@@ -11,18 +11,17 @@ struct MainView: View {
     let screenSize: CGSize = UIScreen.main.bounds.size
     //@State var service = GetRandomTicketServiceImpl()
 
-    @State var randomSong: TicketWritingViewModel?
+    @State var randomSong = TicketWritingViewModel()
     @State var offset: CGFloat = 0.0
+    
+    private let artworkLoader: ArtworkLoader = ArtworkLoader()
     
     var body: some View {
         ZStack {
             Color.bgGrey.edgesIgnoringSafeArea(.all)
             VStack (spacing: 0){
-                Text("Muse Ticket")
-                    .font(.custom("Courier New", size: 34, relativeTo: .title)) //relativeTo : 모든 기기마다 title이 갖는 값을 기준으로 34를 변환 시킨다.
-                    .padding()
                 
-                TicketMachineView()
+                Spacer()
                 
                 HStack(alignment: .center, spacing: 20) {
                     Button(action: {
@@ -30,16 +29,20 @@ struct MainView: View {
                         print("티켓 저장 동작")
                     }, label: {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 20)
+                            Capsule()
                                 .fill(Color.customGrey)
+                                .frame(width: 160, height: 46)
                             HStack(spacing: 5) {
                                 Image(systemName: "square.and.arrow.down")
+                                    .padding(.trailing, 7)
                                 Text("티켓 저장")
                             }
                             .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
                             .foregroundColor(Color.white)
                             .padding()
                         }
+                        .padding(.leading, 7)
+                        .padding(.top, 5)
                     })
                     .frame(width: 165, height: 56)
                     
@@ -51,9 +54,13 @@ struct MainView: View {
                                     guard let snapshot = snapshot else { return }
                                     self.randomSong = snapshot.documents.map { document in
                                         return TicketWritingViewModel(data: document.data())
-                                    }.randomElement()
+                                    }.randomElement()!
                                     
-                                    // TicketView 띄우기
+                                    self.artworkLoader.loadArtwork(forSong: randomSong.artworkUrl ) { image in
+                                            print("in")
+                                            print(randomSong.artworkUrl)
+                                            randomSong.artwork = image
+                                    }
                                 }
                         }
                         
@@ -64,48 +71,52 @@ struct MainView: View {
                             withAnimation {
                                 offset -= 500
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {//.milliseconds(1500)) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                                 withAnimation {
                                     offset += 500
                                 }
                             }
                             
                         } else {
-                            withAnimation {
-                                offset += 500
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                withAnimation {
+                                    offset += 500
+                                }
                             }
                         }
                     }, label: {
                         ZStack {
-                            RoundedRectangle(cornerRadius: 20)
+                            Capsule()
                                 .fill(Color.customPink)
+                                .frame(width: 160, height: 46)
                             HStack(spacing: 5) {
                                 Image(systemName: "arrow.triangle.2.circlepath")
-                                Text("새 티켓 뽑기")
+                                    .padding(.trailing, 7)
+                                Text("티켓 뽑기")
                             }
                             .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
                             .foregroundColor(Color.white)
                             .padding()
-                            
                         }
+                        .padding(.trailing, 7)
+                        .padding(.top, 5)
                     })
                     .frame(width: 165, height: 56)
                 }
+                .foregroundColor(.red)
+                .frame(width: 180, height: 70, alignment: .center)
                 .padding()
             }
-            //            Ticket(trackName: $trackName,
-            //                   artist: $artist,
-            //                   comment: $comment,
-            //                   artworkUrl: $artworkUrl)
-            Ticket(randomSong: $randomSong, offset: $offset)
+            
+            Ticket(randomSong: randomSong, offset: $offset)
+
         }
         .navigationBarHidden(true)
-        .navigationTitle("Muse Ticket")
     }
 }
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+//
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView()
+//    }
+//}

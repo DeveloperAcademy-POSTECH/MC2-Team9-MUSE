@@ -9,13 +9,13 @@ import SwiftUI
 import FirebaseAuth
 //import Foundation
 
-class TicketWritingViewModel: ObservableObject, Identifiable {
+class TicketWritingViewModel: Identifiable, ObservableObject{
     @Published var trackName: String = ""
     @Published var artistName: String = ""
     @Published var musicId : Int = 0
     @Published var comment: String = ""
     @Published var artworkUrl : String = ""
-    @Published var artwork : Image? = nil
+    @Published var artwork : Image?
     @Published var writer: String = ""
     @Published var downloadNum: Int = 0
     
