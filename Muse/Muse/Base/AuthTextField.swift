@@ -16,10 +16,13 @@ struct AuthTextField: View {
     
     var body: some View {
         HStack{
-            TextField("이메일을 입력해주세요", text: $text)
+            Image(systemName: sfSymbol)
+                .padding(.leading, 70)
                 .font(.system(size: 13, weight: .regular))
                 .foregroundColor(Color.gray)
-                .padding(.leading, 20)
+            TextField(placeholder, text: $text)
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.gray)
                 .frame(width: 246, height: 44, alignment: .center)
         }
         .overlay {
@@ -40,10 +43,13 @@ struct PwdTextFeild: View {
     
     var body: some View {
         HStack{
-            SecureField("비밀번호를 입력해주세요", text: $password)
+            Image(systemName: sfSymbol)
+                .padding(.leading, 70)
                 .font(.system(size: 13, weight: .regular))
                 .foregroundColor(Color.gray)
-                .padding(.leading, 20)
+            SecureField(placeholder, text: $password)
+                .font(.system(size: 13, weight: .regular))
+                .foregroundColor(Color.gray)
                 .frame(width: 246, height: 44, alignment: .center)
         }
         .overlay {

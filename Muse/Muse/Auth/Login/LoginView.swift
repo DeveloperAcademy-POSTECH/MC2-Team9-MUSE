@@ -27,7 +27,7 @@ struct LoginView: View {
                 .padding(.bottom, -5)
             
             
-            Text("Our Music World,")
+            Text("Our Music Universe,")
                 .font(.body)
                 .fontWeight(.medium)
                 .padding(.bottom, -15)
@@ -39,12 +39,12 @@ struct LoginView: View {
             
             
             AuthTextField(text: $viewModel.credentials.email,
-                          placeholder: "Email",
+                          placeholder: "이메일을 입력해주세요",
                           keyboardType: .emailAddress,
                           sfSymbol: "envelope")
             
             PwdTextFeild(password: $viewModel.credentials.password,
-                         placeholder: "Password",
+                         placeholder: "비밀번호를 입력해주세요",
                          sfSymbol: "lock")
             
             AuthButton(title: "로그인",
