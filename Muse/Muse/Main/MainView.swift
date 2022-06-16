@@ -15,7 +15,7 @@ struct MainView: View {
     @State var randomSong = TicketWritingViewModel()
     @State var offset: CGFloat = 0.0
     @State var isSaveActivated = false
-    @State var isNewActivated = false
+    @State var isNewActivated = true
     
     private let artworkLoader: ArtworkLoader = ArtworkLoader()
     
@@ -74,6 +74,7 @@ struct MainView: View {
                     .frame(width: 165, height: 56)
                     
                     Button(action: {
+                        isNewActivated = false
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             FirebaseManager.shared.firestore
                                 .collection("tracks") //식별자인 title을 불러 온다.
@@ -97,6 +98,7 @@ struct MainView: View {
                                 } else {
                                     isSaveActivated = true
                                 }
+                                isNewActivated = true
                             }
                             
                         }
@@ -139,6 +141,7 @@ struct MainView: View {
                         .padding(.trailing, 7)
                         .padding(.top, 5)
                     })
+                    .disabled(isNewActivated == false)
                     .frame(width: 165, height: 56)
                 }
                 .foregroundColor(.red)
