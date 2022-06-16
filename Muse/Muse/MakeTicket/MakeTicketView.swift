@@ -6,39 +6,53 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 //import Foundation
 
-class TicketWritingViewModel: ObservableObject {
-    @Published var trackName: String? = nil
-    @Published var artistName: String? = nil
-    @Published var id : Int? = nil
-    @Published var artworkUrl : String? = nil
-    //앨범 불러오기
+class TicketWritingViewModel: ObservableObject, Identifiable {
+    @Published var trackName: String = ""
+    @Published var artistName: String = ""
+    @Published var musicId : Int = 0
+    @Published var comment: String = ""
+    @Published var artworkUrl : String = ""
     @Published var artwork : Image? = nil
+    @Published var writer: String = ""
+    @Published var downloadNum: Int = 0
+    
+    init() {}
+    
+    init(data: [String: Any]) {
+            self.trackName = data["trackName"] as? String ?? "ErrorTitle"
+            self.artistName = data["artistName"] as? String ?? "Errorartist"
+            self.artworkUrl = data["artworkUrl"] as? String ?? "ErrorartWork"
+            self.musicId = data["musicId"] as? Int ?? 0
+            self.downloadNum = data["downloadNum"] as? Int ?? 0
+            self.comment = data["comment"] as? String ?? "ErrorComment"
+            //data안에 title/document가 있으면 string으로 인식 하고 아닐 경우 에러메시지를 띄워주세용
+    }
+
 }
 
 struct MakeTicketView: View {
     
-    @ObservedObject private var makeViewModel = MakeTicketViewModelImpl(
-        service: MakeTicketServiceImpl()
-    )
+    //    @Environment(\.presentationMode) var presenationMode
     
     @ObservedObject var viewModel = TicketWritingViewModel()
     @State var searchText = ""
-    @State var comment: String = ""
     
     @State private var isbuttonActivated = false
     // 버튼 활성화 여부 저장할 변수
+    @State var isShowMusicSearchView = false
+    
+    @Binding var isShowMakeTicketView: Bool
     
     var body: some View {
         ZStack {
             Color.bgGrey.ignoresSafeArea()
             VStack(spacing: 0) {
-//                Text("나만의 음악 티켓을 만들어 보세요.")
-//                    .font(.title2.bold())
-//                    .padding(.horizontal)
-//                    .padding(.bottom, 32)
+
                 ZStack {
+                    
                     Image("machine")
                         .resizable()
                         .scaledToFit()
@@ -46,6 +60,7 @@ struct MakeTicketView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(.all, 32)
+                    
                     VStack {
                         Text("Song")
                             .font(.subheadline)
@@ -68,10 +83,10 @@ struct MakeTicketView: View {
                                     Image(systemName: "magnifyingglass")
                                         .foregroundColor(.customGrey)
                                     Text("제목, 가수를 입력해 보세요")
+                                        .font(.subheadline)
                                         .multilineTextAlignment(.center)
                                         .foregroundColor(.customGrey)
-                                    //                                    TextField("제목, 가수 등", text: $searchText)
-                                    //                                        .disableAutocorrection(true)
+                                    
                                 }
                             }
                             .padding()
@@ -86,11 +101,11 @@ struct MakeTicketView: View {
                             ArtworkView(image: viewModel.artwork)
                                 .padding(.trailing)
                             VStack(alignment: .leading) {
-                                Text(viewModel.trackName ?? "")
-                                Text(viewModel.artistName ?? "")
+                                Text(viewModel.trackName)
+                                Text(viewModel.artistName)
                                     .font(.footnote)
                                     .foregroundColor(.gray)
-//                                Text(String(viewModel.id ?? 0))
+                                //                                Text(String(viewModel.id ?? 0))
                             }
                             Spacer()
                         }
@@ -110,15 +125,15 @@ struct MakeTicketView: View {
                             // placeholder : TextEditor는 placeholder 기능 없어서 만듦.
                             Rectangle()
                                 .foregroundColor(.white)
-                            if self.makeViewModel.ticket.comment.isEmpty {
+                            if self.viewModel.comment.isEmpty {
                                 Text("곡에 대한 코멘트를 입력해주세요")
                                     .font(.subheadline)
                                     .foregroundColor(.customGrey)
                                     .padding(13)
                             }
-                            TextEditor(text: $makeViewModel.ticket.comment)
+                            TextEditor(text: $viewModel.comment)
                                 .font(.subheadline)
-                                .opacity(self.makeViewModel.ticket.comment.isEmpty ? 0.4 : 1)
+                                .opacity(self.viewModel.comment.isEmpty ? 0.4 : 1)
                                 .lineSpacing(3)
                                 .padding(6)
                                 .disableAutocorrection(true)
@@ -138,17 +153,25 @@ struct MakeTicketView: View {
                 .padding(.horizontal)
               
                 Button(action: {
+                    let currentUser = Auth.auth().currentUser
+                    
+                    let document = FirebaseManager.shared.firestore
+                        .collection("tracks")
+                        .document() //firebase에 있는 track이 document부분!
+                    
+                    let data = ["trackName": viewModel.trackName,
+                                "artistName": viewModel.artistName,
+                                "artworkUrl": viewModel.artworkUrl,
+                                "comment": viewModel.comment,
+                                "writer" : currentUser?.uid ?? "",
+                                "musicId": viewModel.musicId,
+                                "downloadNum": viewModel.downloadNum] as [String : Any]
+                    
+                    document.setData(data) //firebase에 보내는작업
+                    
                     print("작성 완료다잉")
-                    makeViewModel.ticket.trackName = viewModel.trackName ?? ""
-                    makeViewModel.ticket.artist = viewModel.artistName ?? ""
-                    makeViewModel.ticket.artworkUrl = viewModel.artworkUrl ?? ""
-                    makeViewModel.create()
-                    print(makeViewModel.ticket.trackName)
-                    print(makeViewModel.ticket.artist)
-                    print(makeViewModel.ticket.comment)
-                    print(makeViewModel.ticket.id)
-                    print(makeViewModel.ticket.artworkUrl)
-                    print("안되네..")
+                    isShowMakeTicketView.toggle()
+                    //                    presenationMode.wrappedValue.dismiss()
                     
                 }, label: {
                     ZStack {
@@ -185,8 +208,16 @@ struct MakeTicketView: View {
     }
 }
 
+struct MakeTicketViewPreviewsContainer: View {
+    @State private var isShow: Bool = false
+    
+    var body: some View {
+        MakeTicketView(isShowMakeTicketView: $isShow)
+    }
+}
+
 struct MakeTicketView_Previews: PreviewProvider {
     static var previews: some View {
-        MakeTicketView(searchText: "", comment: "")
+        MakeTicketViewPreviewsContainer()
     }
 }

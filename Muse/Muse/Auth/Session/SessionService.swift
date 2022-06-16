@@ -42,7 +42,6 @@ final class SessionServiceImpl: SessionService, ObservableObject { // 로그인 
     @Published var userDetails: UserSessionDetails?
     
     private var handler: AuthStateDidChangeListenerHandle? // firebasae에서 제공하는 핸들러, 로그인 상태를 알려줌
-    private var subscriptions = Set<AnyCancellable>()
     
     init() {
         setupObservations()

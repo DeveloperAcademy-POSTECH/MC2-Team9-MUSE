@@ -7,74 +7,112 @@
 
 import SwiftUI
 
-struct TicketView: View {
-    
+
+struct Ticket: View {
+
+    @Binding var randomSong: TicketWritingViewModel?
     @Binding var offset: CGFloat
+
+
+    //    @Binding var trackName: String
+    //    @Binding var artist: String
+    //    @Binding var comment: String
+    //    @Binding var artworkUrl: Stri
+    //
+    
+//
+//    HStack {
+//        ArtworkView(image: song.artwork)
+//            .padding(.trailing)
+//        VStack(alignment: .leading) {
+//            Text(song.trackName)
+//            Text(song.artistName)
+//                .font(.footnote)
+//                .foregroundColor(.gray)
+//        }
+//    }
+//    .padding()
+//
     
     var body: some View {
-        VStack {
-            HStack(spacing: 20) {
-                Image("Album")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 66, height: 66)
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Dreams Like Me")
-                        .font(.headline)
-                        .padding(.vertical, 5)
-                        .lineLimit(1)
-                    Text("Black Skirt")
-                        .padding(.vertical, 5)
-                        .lineLimit(1)
-                }
-                Spacer()
-            }
-            .padding(.top)
-            .padding(.bottom, 10)
-            .frame(width: 240)
-            
-            Divider()
-                .background(Color.black)
-                .frame(width: 240)
-            
-            ScrollView{
-                Text("안녕하세요 제 이름은 검정치마........... 안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........안녕하세요 제 이름은 검정치마...........")
-            }
-            .frame(width: 240, height: 190)
-            .padding(.vertical)
-            
-            Spacer()
-            
-            Link(destination: URL(string: "https://music.apple.com/kr/album/dream-like-me/1626442550?i=1626442551/")!) {
+        VStack{
+        
+            ZStack{
+                Image("machine")
+                
                 ZStack{
-                    Rectangle()
-                        .frame(width: 243, height: 60)
-                        .opacity(0)
-                    Image("Play")
-                        .resizable()
-                        .frame(width: 32, height: 32)
-                        .background()
-                        .clipShape(Circle())
-                        .foregroundColor(.black)
+                    Image("ticket")
+                    HStack{
+                        Image("Album")
+                            .resizable()
+                            .frame(width: 66, height: 66)
+                            .offset(x:40,y:-180)
+                        VStack(alignment: .leading){
+                            Text(randomSong?.trackName ?? "")
+                                .font(.headline)
+                                .offset(x:50,y:-180)
+                            Text(randomSong?.artistName ?? "")
+                                .offset(x:50,y:-170)
+                            Divider()
+                                .background(Color.black)
+                                .frame(width: 250)
+                                .offset(x:-40,y:-150)
+                        }
+                    }
+                    
+                    ScrollView{
+                        Text(randomSong?.comment ?? "")
+                    }
+                    .frame(width: 260, height: 200)
+                    
+                    Link(destination: URL(string: "https://music.apple.com/kr/album/dream-like-me/1626442550?i=1626442551/")!) {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 243, height: 60)
+                                .opacity(0)
+                            Image("Play")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                                .background()
+                                .clipShape(Circle())
+                                .foregroundColor(.black)
+                        }
+                    }
+                    .offset(x:0, y:186.5)
+       
                 }
+                .offset(y: -500)
+                .animation(Animation.easeInOut(duration: 1.5), value: offset)
+                .offset(y: offset)
+                
+                Rectangle()
+                    .frame(width: 300, height: 200)
+                    .offset(y:-350)
+                    .foregroundColor(.white)
+                
+                Image("machine2")
+                    .offset(x:0, y:-327)
             }
-            .padding(.bottom, 21)
+
+//            Button("눌러") {
+//                if offset == 500 {
+//                    offset = 0
+//                }
+//                withAnimation {
+//                    offset += 500
+//                    //                  offset += (offset == 0) ? 500 : -500
+//                }
+//            }
         }
-        .frame(width: 280, height: 460)
-        .background(
-            Image("ticket")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300, height: 480)
-        )
-        .offset(y: -500)
-        .animation(Animation.easeInOut(duration: 1.5), value: offset)
-        .offset(y: offset)        
-    }
-    
-}
-struct TicketView_Previews: PreviewProvider {
-    static var previews: some View {
-        TicketView(offset: .constant(0.0))
+
     }
 }
+
+
+//
+//struct Ticket_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Ticket()
+//    }
+//}
+//

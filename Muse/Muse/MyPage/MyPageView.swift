@@ -27,6 +27,8 @@ struct ChosenView: View {
 }
 
 struct MyPageView: View {
+    @State var isShowMakeTicketView = false
+
     @EnvironmentObject var service: SessionServiceImpl
     @State private var selectedSide: LibraryType = .myTicket
     
@@ -44,7 +46,9 @@ struct MyPageView: View {
                     Image(systemName: "rectangle.portrait.and.arrow.right")
                         .font(.title)
                 }
-                NavigationLink(destination: MakeTicketView()) {
+
+                NavigationLink(destination: MakeTicketView(isShowMakeTicketView: $isShowMakeTicketView), isActive: self.$isShowMakeTicketView) {
+
                     Image(systemName: "square.and.pencil")
                         .font(.title)
                 }
