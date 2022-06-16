@@ -168,7 +168,12 @@ struct MakeTicketView: View {
                                 "downloadNum": viewModel.downloadNum] as [String : Any]
                     
                     document.setData(data) //firebase에 보내는작업
-                    
+                    viewModel.trackName = ""
+                    viewModel.artwork = nil
+                    viewModel.artworkUrl = ""
+                    viewModel.artistName = ""
+                    viewModel.musicId = 0
+                    viewModel.comment = ""
                     print("작성 완료다잉")
                     isShowMakeTicketView.toggle()
                     //                    presenationMode.wrappedValue.dismiss()
