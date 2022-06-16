@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AuthTextField: View {
-
     @Binding var text: String
     let placeholder: String
     let keyboardType: UIKeyboardType
