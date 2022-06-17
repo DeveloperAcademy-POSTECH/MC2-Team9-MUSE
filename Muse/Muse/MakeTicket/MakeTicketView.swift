@@ -18,7 +18,16 @@ class TicketWritingViewModel: Identifiable, ObservableObject{
     @Published var artwork : Image?
     @Published var writer: String = ""
     @Published var downloadNum: Int = 0
+    //Published는 감지를 확인 하는 역할
     
+    var artistNameString : String {
+        return artistName.replacingOccurrences(of: " ", with: "+")
+    }
+    var trackNameString: String {
+        return trackName.replacingOccurrences(of: " ", with: "+")
+    }
+    //호출 되었을 때 불러 오는 값 (변환 하는 부분은 매번 감지 할 필요가 없기 때문)
+
     init() {}
     
     init(data: [String: Any]) {
@@ -107,7 +116,6 @@ struct MakeTicketView: View {
                                 Text(viewModel.artistName)
                                     .font(.footnote)
                                     .foregroundColor(.gray)
-                                //                                Text(String(viewModel.id ?? 0))
                             }
                             Spacer()
                         }
