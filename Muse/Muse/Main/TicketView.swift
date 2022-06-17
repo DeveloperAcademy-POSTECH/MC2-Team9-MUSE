@@ -23,18 +23,18 @@ struct Ticket: View {
                     Image("ticket")
                     HStack{
                         ArtworkView(image: randomSong.artwork)
-                            .frame(width: 66, height: 66)
+                            .frame(width: 40, height: 40)
                             .offset(x:40,y:-180)
                         
                         VStack(alignment: .leading){
                             Text(randomSong.trackName )
                                 .font(.headline)
-                                .frame(width: 190, alignment: .leading)
+                                .frame(width: 175, alignment: .leading)
                                 .offset(x:50,y:-175)
                             Text(randomSong.artistName )
                                 .font(.subheadline)
-                                .frame(width: 180, alignment: .leading)
-                                .offset(x:50,y:-170)
+                                .frame(width: 175, alignment: .leading)
+                                .offset(x:50,y:-175)
                                 .foregroundColor(.gray)
                             Divider()
 //                                .background(Color.black)
