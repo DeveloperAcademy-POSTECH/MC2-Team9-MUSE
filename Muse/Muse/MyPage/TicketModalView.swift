@@ -26,56 +26,64 @@ struct TicketModalView: View {
             }
             .frame(width: 300, height: 50)
             
-            ZStack{
-                Image("ticket")
-                    .shadow(color: .black, radius: 30, x: 0, y: 0)
+            VStack {
+                HStack(spacing: 20) {
+                    ArtworkView(image: clickedSong.artwork)
+                        .frame(width: 66, height: 66)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(clickedSong.trackName)
+                            .font(.headline)
+                            .padding(.vertical, 5)
+                            .lineLimit(1)
+                        Text(clickedSong.artistName)
+                            .padding(.vertical, 5)
+                            .lineLimit(1)
+                    }
+                    Spacer()
+                }
+                .padding(.top)
+                .padding(.bottom, 10)
+                .frame(width: 240)
                 
-                VStack {
-                    
-                    HStack{
-                        ArtworkView(image: clickedSong.artwork)
-                            .frame(width: 66, height: 66)
-                        
-                        VStack(alignment: .leading){
-                            Text(clickedSong.trackName )
-                                .font(.headline)
-                                .frame(width: 190, alignment: .leading)
-                            
-                            Text(clickedSong.artistName )
-                                .font(.subheadline)
-                                .frame(width: 180, alignment: .leading)
-                            Divider()
-                                .background(Color.black)
-                                .frame(width: 250)
-                            
-                        }
-                    }
-                    
-                    ScrollView{
-                        Text(clickedSong.comment )
-                            .font(.callout)
-                            .frame(width: 235, alignment: .leading)
-                    }
-                    .frame(width: 260, height: 200)
-                    
-                    Link(destination: URL(string: "https://music.apple.com/kr/album/dream-like-me/1626442550?i=1626442551/")!) {
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 243, height: 60)
-                                .opacity(0)
-                            Image("Play")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                                .background()
-                                .clipShape(Circle())
-                                .foregroundColor(.black)
-                        }
+                Divider()
+                    .background(Color.black)
+                    .frame(width: 240)
+                
+                ScrollView{
+                    Text(clickedSong.comment)
+                }
+                .frame(width: 240, height: 190)
+                .padding(.vertical)
+                
+                Spacer()
+                
+                let _ = print("https://www.youtube.com/results?search_query=\(clickedSong.artistName)+\(clickedSong.trackName)")
+                Link(destination: URL(string: "https://www.youtube.com/results?search_query=\(clickedSong.artistNameString)+\(clickedSong.trackNameString)")
+                ?? URL(string: "https://www.youtube.com/results?search_query=TAYHEON+Why")!) {
+                    ZStack{
+                        Rectangle()
+                            .frame(width: 243, height: 60)
+                            .opacity(0)
+                        Image("Play")
+                            .resizable()
+                            .frame(width: 32, height: 32)
+                            .background()
+                            .clipShape(Circle())
+                            .foregroundColor(.black)
                     }
                 }
+                .padding(.bottom, 21)
             }
-            
+            .frame(width: 280, height: 460)
+            .background(
+                Image("ticket")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 480)
+            )
         }
-        .animation(Animation.easeInOut(duration: 2))
+        // 이스터에그.. 이거 있으면 코멘트 랜덤 애니메이션 나와요
+//        .animation(Animation.easeInOut(duration: 2))
         
     }
 }
