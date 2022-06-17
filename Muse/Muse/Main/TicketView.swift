@@ -30,14 +30,15 @@ struct Ticket: View {
                             Text(randomSong.trackName )
                                 .font(.headline)
                                 .frame(width: 190, alignment: .leading)
-                                .offset(x:50,y:-180)
-                            
+                                .offset(x:50,y:-175)
                             Text(randomSong.artistName )
                                 .font(.subheadline)
                                 .frame(width: 180, alignment: .leading)
                                 .offset(x:50,y:-170)
+                                .foregroundColor(.gray)
                             Divider()
-                                .background(Color.black)
+//                                .background(Color.black)
+                                .background(.gray)
                                 .frame(width: 250)
                                 .offset(x:-40,y:-150)
                             
@@ -106,9 +107,5 @@ struct Ticket: View {
 
 
 //
-//struct Ticket_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Ticket()
-//    }
-//}
+//s`1qaza`
 //

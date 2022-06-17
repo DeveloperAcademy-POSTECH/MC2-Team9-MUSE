@@ -13,6 +13,7 @@ struct TicketMachineView: View {
             Image("machine")
                 .resizable()
                 .scaledToFit()
+                
             
             VStack(spacing:40){
                 Text("뮤즈풀한 음악을 위해\n티켓을 뽑아보세요.")

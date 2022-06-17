@@ -56,11 +56,12 @@ struct MainView: View {
                     }, label: {
                         ZStack {
                             Capsule()
-                                .fill(isSaveActivated == true ? Color.customNavy : Color.customGrey)
-                                .frame(width: 160, height: 46)
+                                .fill(Color.customGrey)
+                                .frame(width: 160, height: 54)
                             HStack(spacing: 5) {
                                 Image(systemName: "square.and.arrow.down")
-                                    .padding(.trailing, 7)
+                                    .padding(.trailing, 3)
+                                    .offset(y: -2)
                                 Text("티켓 저장")
                             }
                             .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
@@ -128,11 +129,11 @@ struct MainView: View {
                         ZStack {
                             Capsule()
                                 .fill(Color.customPink)
-                                .frame(width: 160, height: 46)
+                                .frame(width: 160, height: 54)
                             HStack(spacing: 5) {
                                 Image(systemName: "arrow.triangle.2.circlepath")
-                                    .padding(.trailing, 7)
-                                Text("티켓 뽑기")
+                                    .padding(.trailing, 3)
+                                Text("새 티켓 뽑기")
                             }
                             .font(.custom("Apple SD Gothic Neo SemiBold",size:17,relativeTo: .title))
                             .foregroundColor(Color.white)
