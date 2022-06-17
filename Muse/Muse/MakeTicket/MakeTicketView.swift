@@ -20,6 +20,14 @@ class TicketWritingViewModel: Identifiable, ObservableObject{
     @Published var writer: String
     @Published var downloadNum: Int
     
+    var artistNameString : String {
+             return artistName.replacingOccurrences(of: " ", with: "+")
+         }
+         var trackNameString: String {
+             return trackName.replacingOccurrences(of: " ", with: "+")
+         }
+         //호출 되었을 때 불러 오는 값 (변환 하는 부분은 매번 감지 할 필요가 없기 때문)
+    
     init(_ a : String = "", _ b : String = "", _ c : Int = 0, _ d : String = "", _ e : String = "", _ f : Image? = nil , _ g : String = "", _ h : Int = 0) {
         self.trackName = a
         self.artistName = b
