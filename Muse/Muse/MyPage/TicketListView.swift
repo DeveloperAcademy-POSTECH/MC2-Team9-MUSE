@@ -15,18 +15,16 @@ struct TicketListView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack() {
+            VStack(spacing: -20) {
                 Spacer() // 리스트 거꾸로 돌리려고..
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight:0, maxHeight: .infinity, alignment: Alignment.topLeading)
-                
-                ForEach(tickets) {
-                    song in
-                    Button {
-                        //
-                    } label: {
-                        Button {
+                ForEach(tickets) { song in
+                    // 카드 리스트 Vstack
+                    VStack (alignment: .center, spacing: 0) {
+                        // 카드 내 Content HStack
+                        Button(action: {
                             // 카드 열기 동작
-                        } label: {
+                        }) {
                             HStack (spacing: 5) {
                                 // 곡 제목 - 가수 VStack
                                 VStack(alignment: .leading, spacing: 0) {
@@ -36,7 +34,6 @@ struct TicketListView: View {
                                         .multilineTextAlignment(.leading)
                                         .lineLimit(1)
                                         .padding(.top, 7)
-                                    
                                     Text(song.artistName)
                                         .font(.callout)
                                         .multilineTextAlignment(.leading)
@@ -55,31 +52,21 @@ struct TicketListView: View {
                             .padding(.vertical)
                             .padding(.horizontal, 20)
                             .foregroundColor(.black)
-                            
                         }
-                        .frame(width: 350, height: 120, alignment: .top)
-                        .background(Color.white)
-                        .cornerRadius(15)
-                        .shadow(color: .gray.opacity(0.5), radius: 2)
-                        
                     }
-                    
-                    
+                    //                    .frame(width: 350, height: 100, alignment: .top)
+                    .frame(width: 350, height: 120, alignment: .top)
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    .shadow(color: .gray.opacity(0.5), radius: 2)
                 }
-                .padding(.top, 20)
-                .padding(.bottom, -20)
-                .frame(maxWidth: .infinity)
-                .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
-                
             }
-            .onAppear{
-                print("tqtqtqtqtqtq")
-                print(tickets)
-                change.toggle()
-            }
+            .padding(.top, 20)
+            .padding(.bottom, -20)
+            .frame(maxWidth: .infinity)
             .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
-            
         }
+        .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
     }
 }
 
