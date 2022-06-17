@@ -86,7 +86,7 @@ struct Ticket: View {
                     .offset(x:0, y:-327)
                 
                 VStack{
-                    Text("Muse Ticket")
+                    Text("Music Ticket")
                         .font(.custom("Courier New", size: 34, relativeTo: .title)) //relativeTo : 모든 기기마다 title이 갖는 값을 기준으로 34를 변환 시킨다.
                         .padding()
                     Spacer()

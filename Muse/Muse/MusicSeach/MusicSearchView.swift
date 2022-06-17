@@ -100,6 +100,7 @@ struct EmptyStateView: View {
             Text("소개하고 싶은 음악을 \n검색해주세요")
                 .font(.title3)
                 .foregroundColor(Color.customPink)
+                .multilineTextAlignment(.center)
             Spacer()
         }
         .padding()
