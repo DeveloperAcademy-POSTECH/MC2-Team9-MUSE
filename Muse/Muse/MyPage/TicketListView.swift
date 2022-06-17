@@ -15,8 +15,14 @@ struct TicketListView: View {
     @State private var showing = false
     @State var clicked = TicketWritingViewModel()
     
+    let loader = ArtworkLoader()
+    
     var body: some View {
+        
+
+        
         ScrollView(showsIndicators: false) {
+            ZStack{
             VStack(spacing: -20) {
                 Spacer() // 리스트 거꾸로 돌리려고..
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight:0, maxHeight: .infinity, alignment: Alignment.topLeading)
@@ -26,8 +32,21 @@ struct TicketListView: View {
                         // 카드 내 Content HStack
                         Button(action: {
                             // 카드 열기 동작
-                            showing = true
-                            clicked = song
+//                            showing = true
+//                            clicked = song
+                            
+                            loader.loadArtwork(forSong: song.artworkUrl){
+                                                            img in
+                                                            song.artwork = img
+                                                        }
+                                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                                                            clicked = TicketWritingViewModel(song.trackName, song.artistName, song.musicId, song.comment, song.artworkUrl, song.artwork, song.writer, song.downloadNum)
+                                                            
+                                                            withAnimation{
+                                                                showing = true
+                                                            }
+                                                        }
+                            
                         }) {
                             HStack (spacing: 5) {
                                 // 곡 제목 - 가수 VStack
@@ -70,18 +89,12 @@ struct TicketListView: View {
             .frame(maxWidth: .infinity)
             .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
         }
-//        .alert(isPresented: $showing, content: {
-////            
-////            ZStack<<#Content: View#>> {
-////                TicketModalView(randomSong: $clicked)
-////            }
-//        })
-        .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
+            .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
+            if showing {
+                   TicketModalView(clickedSong: clicked, showing: $showing)
+               }
     }
 }
 
-//struct TicketListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TicketListView(ticketList: "That That", isMyTicket: true)
-//    }
-//}
+
+}
