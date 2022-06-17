@@ -12,7 +12,9 @@ struct Ticket: View {
     
     @ObservedObject var randomSong: TicketWritingViewModel
     @Binding var offset: CGFloat
-    
+//    let tarackNameString = String(randomSong.$artistName)
+//
+//    "https://www.youtube.com/results?search_"+randomSong.artistName+" "+randomSong.trackName"
     var body: some View {
         VStack{
             
@@ -52,7 +54,10 @@ struct Ticket: View {
                     }
                     .frame(width: 260, height: 200)
                     
-                    Link(destination: URL(string: "https://music.apple.com/kr/album/dream-like-me/1626442550?i=1626442551/")!) {
+                    let _ = print("https://www.youtube.com/results?search_query=\(randomSong.artistName)+\(randomSong.trackName)")
+//                    let _ = print("randomSong.trackName \(randomSong.trackName)")
+                    
+                    Link(destination: URL(string: "https://www.youtube.com/results?search_query=\(randomSong.artistNameString)+\(randomSong.trackNameString)") ?? URL(string: "https://www.youtube.com/results?search_query=TAYHEON+Why")!) {
                         ZStack{
                             Rectangle()
                                 .frame(width: 243, height: 60)
