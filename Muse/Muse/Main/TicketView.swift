@@ -48,6 +48,7 @@ struct Ticket: View {
                     ScrollView{
                         Text(randomSong.comment )
                             .font(.callout)
+                            .lineSpacing(2)
                             .frame(width: 235, alignment: .leading)
                     }
                     .frame(width: 260, height: 200)
