@@ -56,23 +56,11 @@ final class RegistrationServiceImpl: RegistrationService { // final 선언 이�
                             let values = [RegistrationKeys.nickName.rawValue: credentials.nickName,
                                           RegistrationKeys.saveTrack.rawValue: credentials.saveTrack] as [String : Any]
                             
-                            print("register values")
-                            print(credentials.email)
-                            print(values)
-                            
-                            Database
-                                .database()
-                                .reference()
-                                .child("users")
-                                .child(uid)
-                                .updateChildValues(values) { error, ref in
-                                    
-                                    if let err = error {
-                                        promise(.failure(err))
-                                    } else {
-                                        promise(.success(()))
-                                    }
-                                }
+                            let document = FirebaseManager.shared.firestore
+                                .collection("users")
+                                .document(uid)
+                                
+                            document.setData(values)
                         }
                     }
                 }

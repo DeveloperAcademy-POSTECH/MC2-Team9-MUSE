@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct MainView: View {
     let screenSize: CGSize = UIScreen.main.bounds.size
-    //@State var service = GetRandomTicketServiceImpl()
 
+    @EnvironmentObject var service: SessionServiceImpl
     @State var randomSong = TicketWritingViewModel()
     @State var offset: CGFloat = 0.0
+    @State var isSaveActivated = false
+    @State var isNewActivated = true
     
     private let artworkLoader: ArtworkLoader = ArtworkLoader()
     
@@ -24,9 +27,32 @@ struct MainView: View {
                 Spacer()
                 
                 HStack(alignment: .center, spacing: 20) {
+                    
                     Button(action: {
-                        //티켓 저장 하는 코드를 짜야합니다.
-                        print("티켓 저장 동작")
+//
+                        let currentUser = Auth.auth().currentUser
+                        withAnimation {
+                            offset -= 500
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            FirebaseManager.shared.firestore
+                                .collection("tracks")
+                                .document(String(randomSong.musicId))
+                                .updateData(["downloadNum" : randomSong.downloadNum + 1])
+                        }
+                        print(service.userDetails?.saveTrack)
+                            service.userDetails?.saveTrack.append(String(randomSong.musicId))
+                        
+                        print(service.userDetails?.saveTrack)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                            FirebaseManager.shared.firestore
+                                .collection("users")
+                                .document(currentUser!.uid)
+                                .updateData(["saveTrack" : service.userDetails?.saveTrack])
+                        }
+                        
+                        isSaveActivated = false
+                        
                     }, label: {
                         ZStack {
                             Capsule()
@@ -45,14 +71,17 @@ struct MainView: View {
                         .padding(.leading, 7)
                         .padding(.top, 5)
                     })
+                    .disabled(isSaveActivated == false)
                     .frame(width: 165, height: 56)
                     
                     Button(action: {
+                        isNewActivated = false
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             FirebaseManager.shared.firestore
                                 .collection("tracks") //식별자인 title을 불러 온다.
                                 .addSnapshotListener { snapshot, error in // Fire base just let me do this!
                                     guard let snapshot = snapshot else { return }
+
                                     self.randomSong = snapshot.documents.map { document in
                                         return TicketWritingViewModel(data: document.data())
                                     }.randomElement()!
@@ -63,6 +92,16 @@ struct MainView: View {
                                             randomSong.artwork = image
                                     }
                                 }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                                if (service.userDetails?.saveTrack.contains(String(randomSong.musicId))) ?? true {
+                                    isSaveActivated = false
+                                } else {
+                                    isSaveActivated = true
+                                }
+                                isNewActivated = true
+                            }
+                            
                         }
                         
                         // 랜덤한 새로운 티켓을 다시 보여주는 코드를 짜야 합니다.
@@ -85,6 +124,7 @@ struct MainView: View {
                                 }
                             }
                         }
+                        
                     }, label: {
                         ZStack {
                             Capsule()
@@ -102,6 +142,7 @@ struct MainView: View {
                         .padding(.trailing, 7)
                         .padding(.top, 5)
                     })
+                    .disabled(isNewActivated == false)
                     .frame(width: 165, height: 56)
                 }
                 .foregroundColor(.red)
