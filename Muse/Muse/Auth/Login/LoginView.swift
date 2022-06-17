@@ -76,11 +76,14 @@ struct LoginView: View {
                     .sheet(isPresented: $showRegistration) {
                         RegisterView()
                     }
-            }.frame(width: 270, height: 20, alignment: .trailing)
+            }
+            .frame(width: 270, height: 20, alignment: .trailing)
+            .padding(.top, 5)
             
         }
         .padding(.horizontal, 15)
-        .navigationTitle("Login")
+//        .navigationTitle("Login")
+        .navigationBarHidden(true)
         
         //            .alert(isPresented: $viewModel.hasError,
         //                   content: {

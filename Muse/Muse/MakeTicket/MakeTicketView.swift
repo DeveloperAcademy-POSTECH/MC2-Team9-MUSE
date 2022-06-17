@@ -82,13 +82,14 @@ struct MakeTicketView: View {
                                     .frame(height:30)
                                 HStack {
                                     Image(systemName: "magnifyingglass")
-                                        .foregroundColor(.customGrey)
-                                    Text("제목, 가수를 입력해 보세요")
+//                                        .foregroundColor(.customGrey)
+                                    Text("제목, 가수를 입력해주세요")
                                         .font(.subheadline)
-                                        .multilineTextAlignment(.center)
-                                        .foregroundColor(.customGrey)
-                                    
+//                                        .multilineTextAlignment(.center)
+//                                        .foregroundColor(.customGrey)
                                 }
+                                .foregroundColor(.customGrey)
+                                .frame(width: 230, alignment: .leading)
                             }
                             .padding()
                             
@@ -100,7 +101,7 @@ struct MakeTicketView: View {
                         
                         HStack(){
                             ArtworkView(image: viewModel.artwork)
-                                .padding(.trailing)
+                                .padding(.trailing, 5)
                             VStack(alignment: .leading) {
                                 Text(viewModel.trackName)
                                 Text(viewModel.artistName)
@@ -110,9 +111,11 @@ struct MakeTicketView: View {
                             }
                             Spacer()
                         }
-                        .padding()
+                        .frame(width: 240)
+                        .padding(.top)
                         
-                        
+                        Divider().padding()
+                            .foregroundColor(.customGrey)
                         
                         Text("Comment")
                             .font(.subheadline)
@@ -183,11 +186,13 @@ struct MakeTicketView: View {
                     ZStack {
                         // 버튼 활성화 조건문 구현
                         if (isbuttonActivated == false){
-                            RoundedRectangle(cornerRadius: 20)
+//                            RoundedRectangle(cornerRadius: 20)
+                            Capsule()
                                 .foregroundColor(Color.gray)
                         }
                         else {
-                            RoundedRectangle(cornerRadius: 20)
+//                            RoundedRectangle(cornerRadius: 20)
+                            Capsule()
                                 .foregroundColor(Color.customPink)
                         }
                         

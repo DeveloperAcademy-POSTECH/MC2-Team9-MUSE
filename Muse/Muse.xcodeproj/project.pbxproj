@@ -18,7 +18,6 @@
 		445223622858360500F456CD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 445223612858360500F456CD /* FirebaseFirestore */; };
 		445223642858360500F456CD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 445223632858360500F456CD /* FirebaseStorage */; };
 		63B2EC6F2856BE5200E9E9CA /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2EC6E2856BE5200E9E9CA /* TicketView.swift */; };
-		63B2EC71285765D100E9E9CA /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B2EC70285765D100E9E9CA /* Animation.swift */; };
 		843766ED28587EE500339579 /* TicketMachineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843766EC28587EE500339579 /* TicketMachineView.swift */; };
 		84A776742852D809001FC86E /* MuseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A776732852D809001FC86E /* MuseApp.swift */; };
 		84A776762852D809001FC86E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A776752852D809001FC86E /* ContentView.swift */; };
@@ -71,7 +70,6 @@
 		0E93F1A128586A8700AC8898 /* SongListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewModel.swift; sourceTree = "<group>"; };
 		0E93F1A328586AB000AC8898 /* ArtworkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLoader.swift; sourceTree = "<group>"; };
 		63B2EC6E2856BE5200E9E9CA /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
-		63B2EC70285765D100E9E9CA /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		843766EC28587EE500339579 /* TicketMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketMachineView.swift; sourceTree = "<group>"; };
 		84A776702852D809001FC86E /* Muse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A776732852D809001FC86E /* MuseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuseApp.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 				84A7769D2852EF75001FC86E /* MainView.swift */,
 				843766EC28587EE500339579 /* TicketMachineView.swift */,
 				63B2EC6E2856BE5200E9E9CA /* TicketView.swift */,
-				63B2EC70285765D100E9E9CA /* Animation.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -429,7 +426,6 @@
 				0E93F1A0285869F100AC8898 /* TicketWritingView.swift in Sources */,
 				A2AC011B28582DC900130CB8 /* AuthButton.swift in Sources */,
 				84A776A02852FD70001FC86E /* MyPageView.swift in Sources */,
-				63B2EC71285765D100E9E9CA /* Animation.swift in Sources */,
 				84A7769E2852EF75001FC86E /* MainView.swift in Sources */,
 				84A776742852D809001FC86E /* MuseApp.swift in Sources */,
 				0E93F19A2858676F00AC8898 /* MusicSearchView.swift in Sources */,
