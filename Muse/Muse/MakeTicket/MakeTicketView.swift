@@ -5,30 +5,31 @@
 //  Created by Admin on 2022/06/10.
 //
 
+
 import SwiftUI
 import FirebaseAuth
 //import Foundation
 
 class TicketWritingViewModel: Identifiable, ObservableObject{
-    @Published var trackName: String = ""
-    @Published var artistName: String = ""
-    @Published var musicId : Int = 0
-    @Published var comment: String = ""
-    @Published var artworkUrl : String = ""
+    @Published var trackName: String
+    @Published var artistName: String
+    @Published var musicId : Int
+    @Published var comment: String
+    @Published var artworkUrl : String
     @Published var artwork : Image?
-    @Published var writer: String = ""
-    @Published var downloadNum: Int = 0
-    //Published는 감지를 확인 하는 역할
+    @Published var writer: String
+    @Published var downloadNum: Int
     
-    var artistNameString : String {
-        return artistName.replacingOccurrences(of: " ", with: "+")
+    init(_ a : String = "", _ b : String = "", _ c : Int = 0, _ d : String = "", _ e : String = "", _ f : Image? = nil , _ g : String = "", _ h : Int = 0) {
+        self.trackName = a
+        self.artistName = b
+        self.musicId = c
+        self.comment = d
+        self.artworkUrl = e
+        self.artwork = f
+        self.writer = g
+        self.downloadNum = h
     }
-    var trackNameString: String {
-        return trackName.replacingOccurrences(of: " ", with: "+")
-    }
-    //호출 되었을 때 불러 오는 값 (변환 하는 부분은 매번 감지 할 필요가 없기 때문)
-
-    init() {}
     
     init(data: [String: Any]) {
             self.trackName = data["trackName"] as? String ?? "ErrorTitle"
@@ -42,6 +43,8 @@ class TicketWritingViewModel: Identifiable, ObservableObject{
     }
 
 }
+
+
 
 struct MakeTicketView: View {
     

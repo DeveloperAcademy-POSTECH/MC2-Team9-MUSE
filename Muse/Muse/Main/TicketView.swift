@@ -57,7 +57,7 @@ struct Ticket: View {
                     let _ = print("https://www.youtube.com/results?search_query=\(randomSong.artistName)+\(randomSong.trackName)")
 //                    let _ = print("randomSong.trackName \(randomSong.trackName)")
                     
-                    Link(destination: URL(string: "https://www.youtube.com/results?search_query=\(randomSong.artistNameString)+\(randomSong.trackNameString)") ?? URL(string: "https://www.youtube.com/results?search_query=TAYHEON+Why")!) {
+                    Link(destination: URL(string: "https://www.youtube.com/results?search_query=\(randomSong.artistName)+\(randomSong.trackName)") ?? URL(string: "https://www.youtube.com/results?search_query=TAYHEON+Why")!) {
                         ZStack{
                             Rectangle()
                                 .frame(width: 243, height: 60)
