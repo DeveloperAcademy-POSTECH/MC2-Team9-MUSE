@@ -4,6 +4,7 @@
 //
 //  Created by kelly on 2022/06/13.
 //
+// 참고 : https://www.youtube.com/watch?v=5gIuYHn9nOc
 
 import SwiftUI
 
