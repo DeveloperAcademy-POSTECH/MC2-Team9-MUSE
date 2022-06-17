@@ -12,6 +12,8 @@ struct TicketListView: View {
     @State var change: Bool = true
     
     @Binding var tickets: [TicketWritingViewModel]
+    @State private var showing = false
+    @State var clicked = TicketWritingViewModel()
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -21,7 +23,8 @@ struct TicketListView: View {
                 ForEach(tickets) {
                     song in
                     Button {
-                        //
+                        showing = true
+                        clicked = song
                     } label: {
                         VStack (alignment: .center, spacing: 0) {
                             // 카드 내 Content HStack
@@ -76,6 +79,12 @@ struct TicketListView: View {
             print(tickets)
             change.toggle()
         }
+//        .alert(isPresented: $showing, content: {
+////            
+////            ZStack<<#Content: View#>> {
+////                TicketModalView(randomSong: $clicked)
+////            }
+//        })
         .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
         
     }
