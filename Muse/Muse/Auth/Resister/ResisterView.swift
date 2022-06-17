@@ -71,7 +71,7 @@ struct RegisterView: View {
                         Text("괜찮아요, 다음에 할게요")
                             .frame(width: 286, height: 44, alignment: .center)
 //                            .font(.system(size: 13, weight: .regular))
-                            .font(.body)
+                            .font(.subheadline)
                             .foregroundColor(Color.gray)
                             .padding(.leading, 20)
                     }
