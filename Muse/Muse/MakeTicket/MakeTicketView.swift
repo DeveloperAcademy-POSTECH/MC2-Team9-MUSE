@@ -8,7 +8,24 @@
 
 import SwiftUI
 import FirebaseAuth
-//import Foundation
+import Foundation
+
+// 키보드 숨기기 위한 option (참고: https://seons-dev.tistory.com/entry/CODE-%ED%83%AD%ED%95%98%EC%97%AC-%ED%82%A4%EB%B3%B4%EB%93%9C-%EC%88%A8%EA%B8%B0%EB%8A%94%EB%B0%A9%EB%B2%95-hideKeyboard)
+extension UIApplication {
+    func hideKeyboard() {
+        guard let window = windows.first else { return }
+        let tapRecognizer = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
+        tapRecognizer.cancelsTouchesInView = false
+        tapRecognizer.delegate = self
+        window.addGestureRecognizer(tapRecognizer)
+    }
+ }
+ 
+extension UIApplication: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+}
 
 class TicketWritingViewModel: Identifiable, ObservableObject{
     @Published var trackName: String
@@ -172,6 +189,7 @@ struct MakeTicketView: View {
                     .padding(.top, 5)
                     .frame(width: 286, height: 451)
                 }
+                .onAppear (perform : UIApplication.shared.hideKeyboard)
                 .frame(width: .infinity, height: 560)
                 .padding(.top, 27)
                 .padding(.horizontal)
