@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Crop 최종.png",
+      "filename" : "machine2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Crop 최종@2x.png",
+      "filename" : "machine2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Crop 최종@3x.png",
+      "filename" : "machine2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
