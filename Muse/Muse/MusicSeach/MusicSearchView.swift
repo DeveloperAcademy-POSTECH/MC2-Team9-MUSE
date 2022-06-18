@@ -76,7 +76,7 @@ struct ArtworkView: View {
                 image
             } else {
                 Image("")
-                Color(.systemIndigo)
+//                Color(.systemIndigo)
 //                Image(systemName: "music.note")
 //                    .font(.largeTitle)
 //                    .foregroundColor(.white)
