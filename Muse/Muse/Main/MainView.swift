@@ -56,7 +56,7 @@ struct MainView: View {
                     }, label: {
                         ZStack {
                             Capsule()
-                                .fill(Color.customGrey)
+                                .fill(isSaveActivated ? Color.customNavy : Color.customGrey)
                                 .frame(width: 160, height: 54)
                             HStack(spacing: 5) {
                                 Image(systemName: "square.and.arrow.down")

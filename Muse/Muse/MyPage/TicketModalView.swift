@@ -17,11 +17,12 @@ struct TicketModalView: View {
             HStack{
                 Spacer()
                 Button {
-                    showing = false
+                        showing = false
                 } label: {
                     Image(systemName: "xmark")
                         .foregroundColor(.black)
                         .font(.title)
+                        .padding(.trailing, 10)
                 }
             }
             .frame(width: 300, height: 50)

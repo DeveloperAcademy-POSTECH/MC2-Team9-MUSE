@@ -28,10 +28,6 @@ struct TicketListView: View {
                         VStack (alignment: .center, spacing: 0) {
                             // 카드 내 Content HStack
                             Button(action: {
-                                // 카드 열기 동작
-                                //                            showing = true
-                                //                            clicked = song
-                                
                                 loader.loadArtwork(forSong: song.artworkUrl){
                                     img in
                                     song.artwork = img
@@ -64,7 +60,7 @@ struct TicketListView: View {
                                     }
                                     Spacer()
                                     // 조건문으로 받아오는 데이터 타입에 따라(저장한 티켓에서는) 아래 내용 표시 X
-                                    if isMyTicket {
+                                    if !isMyTicket {
                                         Image(systemName: "square.and.arrow.down")
                                         Text(String(song.downloadNum))
                                     }
@@ -87,8 +83,10 @@ struct TicketListView: View {
                 .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
             }
             .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
+            
             if showing {
                 TicketModalView(clickedSong: clicked, showing: $showing)
+                    //.animation(Animation.easeInOut(duration: 2))
             }
         }
     }

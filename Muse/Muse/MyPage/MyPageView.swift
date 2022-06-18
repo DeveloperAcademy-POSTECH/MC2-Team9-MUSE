@@ -53,13 +53,15 @@ struct MyPageView: View {
                     service.logout()
                 }) {
                     Image(systemName: "rectangle.portrait.and.arrow.right")
-                        .font(.title2.bold())
+                        .font(.title)
+                        .padding(.trailing, 5)
                 }
                 
                 NavigationLink(destination: MakeTicketView(isShowMakeTicketView: $isShowMakeTicketView), isActive: self.$isShowMakeTicketView) {
                     
                     Image(systemName: "square.and.pencil")
                         .font(.title)
+                        .padding(.trailing, 5)
                 }
             }
             .padding(.top)
