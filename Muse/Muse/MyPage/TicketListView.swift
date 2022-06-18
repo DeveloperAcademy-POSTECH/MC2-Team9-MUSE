@@ -28,10 +28,6 @@ struct TicketListView: View {
                         VStack (alignment: .center, spacing: 0) {
                             // 카드 내 Content HStack
                             Button(action: {
-                                // 카드 열기 동작
-                                //                            showing = true
-                                //                            clicked = song
-                                
                                 loader.loadArtwork(forSong: song.artworkUrl){
                                     img in
                                     song.artwork = img
@@ -90,7 +86,7 @@ struct TicketListView: View {
             
             if showing {
                 TicketModalView(clickedSong: clicked, showing: $showing)
-                    .animation(Animation.easeInOut(duration: 2))
+                    //.animation(Animation.easeInOut(duration: 2))
             }
         }
     }

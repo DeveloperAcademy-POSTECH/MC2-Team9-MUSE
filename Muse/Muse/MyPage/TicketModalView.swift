@@ -24,6 +24,7 @@ struct TicketModalView: View {
                     Image(systemName: "xmark")
                         .foregroundColor(.black)
                         .font(.title)
+                        .padding(.trailing, 10)
                 }
             }
             .frame(width: 300, height: 50)
