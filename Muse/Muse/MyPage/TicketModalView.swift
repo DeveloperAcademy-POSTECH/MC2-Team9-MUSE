@@ -17,9 +17,7 @@ struct TicketModalView: View {
             HStack{
                 Spacer()
                 Button {
-                    withAnimation {
                         showing = false
-                    }
                 } label: {
                     Image(systemName: "xmark")
                         .foregroundColor(.black)

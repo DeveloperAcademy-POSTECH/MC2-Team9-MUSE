@@ -60,7 +60,7 @@ struct TicketListView: View {
                                     }
                                     Spacer()
                                     // 조건문으로 받아오는 데이터 타입에 따라(저장한 티켓에서는) 아래 내용 표시 X
-                                    if isMyTicket {
+                                    if !isMyTicket {
                                         Image(systemName: "square.and.arrow.down")
                                         Text(String(song.downloadNum))
                                     }
