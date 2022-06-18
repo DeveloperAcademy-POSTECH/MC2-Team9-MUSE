@@ -26,6 +26,8 @@ struct AuthTextField: View {
                 .foregroundColor(Color.gray)
                 .frame(width: 286, height: 44, alignment: .center)
                 .keyboardType(.emailAddress)
+                .disableAutocorrection(true)
+                .textInputAutocapitalization(.never)
         }
         .overlay {
 //            RoundedRectangle(cornerRadius: 100)

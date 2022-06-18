@@ -23,58 +23,65 @@ struct Ticket: View {
                 
                 ZStack{
                     Image("ticket")
-                    HStack{
-                        ArtworkView(image: randomSong.artwork)
-                            .frame(width: 40, height: 40)
-                            .offset(x:40,y:-180)
-                        
-                        VStack(alignment: .leading){
-                            Text(randomSong.trackName )
-                                .font(.headline)
-                                .frame(width: 175, alignment: .leading)
-                                .offset(x:50,y:-175)
-                            Text(randomSong.artistName )
-                                .font(.subheadline)
-                                .frame(width: 175, alignment: .leading)
-                                .offset(x:50,y:-175)
-                                .foregroundColor(.gray)
-                            Divider()
-//                                .background(Color.black)
-                                .background(.gray)
-                                .frame(width: 250)
-                                .offset(x:-40,y:-150)
+                    VStack {
+                        HStack{
+                            ArtworkView(image: randomSong.artwork)
+                                .frame(width: 40, height: 40)
+    //                            .offset(x:40,y:-180)
+                                .padding(.trailing, 15)
                             
+                            VStack(alignment: .leading){
+                                Text(randomSong.trackName )
+                                    .font(.headline)
+                                    .frame(width: 175, alignment: .leading)
+    //                                .offset(x:50,y:-175)
+                                Text(randomSong.artistName )
+                                    .font(.subheadline)
+                                    .frame(width: 175, alignment: .leading)
+    //                                .offset(x:50,y:-175)
+                                    .foregroundColor(.gray)
+                                
+                            }
                         }
-                    }
-                    
-                    ScrollView{
-                        Text(randomSong.comment )
-                            .font(.callout)
-                            .lineSpacing(2)
-                            .frame(width: 235, alignment: .leading)
-                    }
-                    .frame(width: 260, height: 200)
-                    
-                    
-                    let _ = print("https://www.youtube.com/results?search_query=\(randomSong.artistName)+\(randomSong.trackName)")
-//                    let _ = print("randomSong.trackName \(randomSong.trackName)")
-                    
-                    Link(destination: URL(string: "https://www.youtube.com/results?search_query=\(randomSong.artistNameString)+\(randomSong.trackNameString)")
-                         ?? URL(string: "https://www.youtube.com/results?search_query=TAYHEON+Why")!) {
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 243, height: 60)
-                                .opacity(0)
-                            Image("Play")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                                .background()
-                                .clipShape(Circle())
-                                .foregroundColor(.black)
+                        .padding(.leading, 15)
+                        
+                        Divider()
+    //                                .background(Color.black)
+                            .background(.gray)
+                            .frame(width: 245)
+    //                                .offset(x:-20,y:-150)
+                            .padding()
+                        
+                        ScrollView{
+                            Text(randomSong.comment )
+                                .font(.callout)
+                                .lineSpacing(4)
+                                .frame(width: 240, alignment: .leading)
                         }
+                        .frame(width: 260, height: 195)
+                        .padding(.bottom, 10)
+                        
+                        
+                        let _ = print("https://www.youtube.com/results?search_query=\(randomSong.artistName)+\(randomSong.trackName)")
+    //                    let _ = print("randomSong.trackName \(randomSong.trackName)")
+                        
+                        Link(destination: URL(string: "https://www.youtube.com/results?search_query=\(randomSong.artistNameString)+\(randomSong.trackNameString)")
+                             ?? URL(string: "https://www.youtube.com/results?search_query=TAYHEON+Why")!) {
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 243, height: 60)
+                                    .opacity(0)
+                                Image("Play")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                                    .background()
+                                    .clipShape(Circle())
+                                    .foregroundColor(.black)
+                            }
+                        }
+//                        .offset(x:0, y:186.5)
+                             .padding(.top, 66)
                     }
-                    .offset(x:0, y:186.5)
-                    
                 }
                 .offset(y: -500)
                 .animation(Animation.easeInOut(duration: offset ==  500 ? 1.5 : 0.5), value: offset)
@@ -86,7 +93,8 @@ struct Ticket: View {
                     .foregroundColor(.white)
                 
                 Image("machine2")
-                    .offset(x:0, y:-327)
+                    .offset(x:0, y:-325)
+                    .padding(.horizontal, 0.6)
                 
                 VStack{
                     Text("Music Ticket")
