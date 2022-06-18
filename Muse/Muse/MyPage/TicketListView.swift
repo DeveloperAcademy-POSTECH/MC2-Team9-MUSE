@@ -87,8 +87,10 @@ struct TicketListView: View {
                 .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
             }
             .rotationEffect(Angle(degrees: 180)) // 리스트 거꾸로 돌릴려고..
+            
             if showing {
                 TicketModalView(clickedSong: clicked, showing: $showing)
+                    .animation(Animation.easeInOut(duration: 2))
             }
         }
     }
