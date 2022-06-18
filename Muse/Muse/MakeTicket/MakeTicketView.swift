@@ -172,6 +172,7 @@ struct MakeTicketView: View {
                     .padding(.top, 5)
                     .frame(width: 286, height: 451)
                 }
+                .frame(width: .infinity, height: 560)
                 .padding(.top, 27)
                 .padding(.horizontal)
               
