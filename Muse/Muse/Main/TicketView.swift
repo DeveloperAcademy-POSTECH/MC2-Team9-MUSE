@@ -135,7 +135,7 @@ struct Ticket: View {
         .confirmationDialog("", isPresented: self.$isShowAlert) {
             Button("차단하기") {
                 blockAlert = true
-//                randomSong.blockedUsers.append(randomSong.writer)
+                randomSong.blockedUsers.append(randomSong.writer)
             }
 //            .alert("Alert Title", isPresented: $blockAlert){
 //                Button("차단하기", role: .destructive){}
@@ -152,12 +152,18 @@ struct Ticket: View {
         }
         .sheet(isPresented: $isShowMailView) {
             MailView(result: $mailResult)
-                .alert("Alert Title", isPresented: $blockAlert){
-                    Button("차단하기", role: .destructive){}
-                } message: {
-                    Text("차단시 작성자의 모든 티켓이 차단됩니다.")
-                }
+//                .alert("Alert Title", isPresented: $blockAlert){
+//                    Button("차단하기", role: .destructive){}
+//                } message: {
+//                    Text("차단시 작성자의 모든 티켓이 차단됩니다.")
+//                }
             
         }
+        .alert("Alert Title", isPresented: $blockAlert){
+            Button("차단하기", role: .destructive){}
+        } message: {
+            Text("차단시 작성자의 모든 티켓이 차단됩니다.")
+        }
+        
     }
 }
