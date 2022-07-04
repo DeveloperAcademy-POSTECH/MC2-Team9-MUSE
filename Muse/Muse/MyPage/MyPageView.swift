@@ -85,7 +85,7 @@ struct MyPageView: View {
             wroteTickets.removeAll()
             savedTickets.removeAll()
             let uid = Auth.auth().currentUser?.uid
-            print(uid!)
+            print(uid ?? "")
             
             FirebaseManager.shared.firestore
                 .collection("tracks") //식별자인 title을 불러 온다.
@@ -93,7 +93,7 @@ struct MyPageView: View {
                     guard let snapshot = snapshot else { return }
                     
                     snapshot.documents.forEach { document in // Fire base just let me do this!
-                        let song = TicketWritingViewModel(data: document.data())
+                        guard let song = TicketWritingViewModel(data: document.data()) else { return }
   
                         if uid == song.writer {
                             wroteTickets.append(song)

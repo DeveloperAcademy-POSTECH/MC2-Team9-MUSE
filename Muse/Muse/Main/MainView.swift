@@ -11,6 +11,7 @@ import FirebaseAuth
 struct MainView: View {
     let screenSize: CGSize = UIScreen.main.bounds.size
 
+
     @EnvironmentObject var service: SessionServiceImpl
     @State var randomSong = TicketWritingViewModel()
     @State var offset: CGFloat = 0.0
@@ -44,7 +45,7 @@ struct MainView: View {
                             service.userDetails?.saveTrack.append(String(randomSong.musicId))
                         
                         print(service.userDetails?.saveTrack)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             FirebaseManager.shared.firestore
                                 .collection("users")
                                 .document(currentUser!.uid)
@@ -82,7 +83,7 @@ struct MainView: View {
                                 .addSnapshotListener { snapshot, error in // Fire base just let me do this!
                                     guard let snapshot = snapshot else { return }
 
-                                    self.randomSong = snapshot.documents.map { document in
+                                    self.randomSong = snapshot.documents.compactMap { document in
                                         return TicketWritingViewModel(data: document.data())
                                     }.randomElement()!
                                     

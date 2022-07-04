@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TicketModalView: View {
     @ObservedObject var clickedSong: TicketWritingViewModel
+    @Binding var tickets: [TicketWritingViewModel]
     @Binding var showing: Bool
     
     var body: some View {
@@ -28,7 +29,7 @@ struct TicketModalView: View {
             .frame(width: 300, height: 50)
             
             VStack {
-                HStack(spacing: 20) {
+                HStack {
                     ArtworkView(image: clickedSong.artwork)
                         .frame(width: 66, height: 66)
                     VStack(alignment: .leading, spacing: 0) {
@@ -36,9 +37,22 @@ struct TicketModalView: View {
                             .font(.headline)
                             .padding(.vertical, 5)
                             .lineLimit(1)
-                        Text(clickedSong.artistName)
-                            .padding(.vertical, 5)
-                            .lineLimit(1)
+                        HStack {
+                            Text(clickedSong.artistName)
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .lineLimit(1)
+                                .padding(.vertical, 5)
+                            Spacer()
+                            Button {
+                                guard let index = tickets.firstIndex(of: clickedSong) else { return }
+                                tickets.remove(at: index)
+                                showing = false
+                            } label: {
+                                Image(systemName: "trash")
+//                                Text("🗑")
+                            }
+                        }
                     }
                     Spacer()
                 }
@@ -52,8 +66,10 @@ struct TicketModalView: View {
                 
                 ScrollView{
                     Text(clickedSong.comment)
+                        .multilineTextAlignment(.leading)
+                        .frame(alignment: .leading)
                 }
-                .frame(width: 240, height: 190)
+                .frame(width: 240, height: 190, alignment: .leading)
                 .padding(.vertical)
                 
                 Spacer()

@@ -27,7 +27,15 @@ extension UIApplication: UIGestureRecognizerDelegate {
     }
 }
 
-class TicketWritingViewModel: Identifiable, ObservableObject{
+class TicketWritingViewModel: Identifiable, Equatable, ObservableObject{
+    static func == (lhs: TicketWritingViewModel, rhs: TicketWritingViewModel) -> Bool {
+        return lhs.musicId == rhs.musicId && lhs.writer == rhs.writer
+    }
+    
+    var blockedUsers : [String] {
+        get{ UserDefaults.standard.stringArray(forKey: "blockedUsers") ?? []}
+        set{ UserDefaults.standard.set(newValue,forKey: "blockedUsers")}
+    }
     @Published var trackName: String
     @Published var artistName: String
     @Published var musicId : Int
@@ -56,7 +64,7 @@ class TicketWritingViewModel: Identifiable, ObservableObject{
         self.downloadNum = h
     }
     
-    init(data: [String: Any]) {
+    init?(data: [String: Any]) {
             self.trackName = data["trackName"] as? String ?? "ErrorTitle"
             self.artistName = data["artistName"] as? String ?? "Errorartist"
             self.artworkUrl = data["artworkUrl"] as? String ?? "ErrorartWork"
@@ -64,6 +72,11 @@ class TicketWritingViewModel: Identifiable, ObservableObject{
             self.downloadNum = data["downloadNum"] as? Int ?? 0
             self.comment = data["comment"] as? String ?? "ErrorComment"
             self.writer = data["writer"] as? String ?? ""
+        
+        if  blockedUsers.contains(self.writer){
+            return nil 
+        }
+            
             //data안에 title/document가 있으면 string으로 인식 하고 아닐 경우 에러메시지를 띄워주세용
     }
 
@@ -72,7 +85,6 @@ class TicketWritingViewModel: Identifiable, ObservableObject{
 
 
 struct MakeTicketView: View {
-    
     //    @Environment(\.presentationMode) var presenationMode
     
     @ObservedObject var viewModel = TicketWritingViewModel()
@@ -199,7 +211,8 @@ struct MakeTicketView: View {
                     
                     let document = FirebaseManager.shared.firestore
                         .collection("tracks")
-                        .document(String(viewModel.musicId)) //firebase에 있는 track이 document부분!
+                        .document()
+                        //.document(String(viewModel.musicId)) //firebase에 있는 track이 document부분!
                     
                     let data = ["trackName": viewModel.trackName,
                                 "artistName": viewModel.artistName,
@@ -218,7 +231,6 @@ struct MakeTicketView: View {
                     viewModel.comment = ""
                     print("작성 완료다잉")
                     isShowMakeTicketView.toggle()
-                    //                    presenationMode.wrappedValue.dismiss()
                     
                 }, label: {
                     ZStack {
