@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>102183677978-pojdpjhkqm2rs6b2ksv8esur9e3n1mff.apps.googleusercontent.com</string>
+	<string>33642655439-80v4c0724ekh4s6rvr73vu3vrc8mvvvu.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.102183677978-pojdpjhkqm2rs6b2ksv8esur9e3n1mff</string>
+	<string>com.googleusercontent.apps.33642655439-80v4c0724ekh4s6rvr73vu3vrc8mvvvu</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAOtt7WPF_80waCQzv3_7J83WyXwkhRr7c</string>
+	<string>AIzaSyCcZZZFMVqsf768fkuIoWFwrapTWTZhEU4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>102183677978</string>
+	<string>33642655439</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.MC2.Muse</string>
 	<key>PROJECT_ID</key>
-	<string>muse-881ca</string>
+	<string>ada-muse</string>
 	<key>STORAGE_BUCKET</key>
-	<string>muse-881ca.appspot.com</string>
+	<string>ada-muse.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:102183677978:ios:21c09c6bb8aa63caa661a3</string>
+	<string>1:33642655439:ios:c297e601b9afb6be8b51ba</string>
 </dict>
 </plist>

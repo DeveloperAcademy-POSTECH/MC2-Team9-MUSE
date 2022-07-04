@@ -68,7 +68,7 @@ struct SongView: View {
 }
 
 struct ArtworkView: View {
-    let image: Image?
+    var image: Image?
     
     var body: some View {
         ZStack {
@@ -76,14 +76,9 @@ struct ArtworkView: View {
                 image
             } else {
                 Image("")
-//                Color(.systemIndigo)
-//                Image(systemName: "music.note")
-//                    .font(.largeTitle)
-//                    .foregroundColor(.white)
             }
         }
         .frame(width: 50, height: 50)
-//        .shadow(radius: 5)
         .padding(.trailing, 5)
     }
 }

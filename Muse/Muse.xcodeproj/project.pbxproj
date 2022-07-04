@@ -13,6 +13,9 @@
 		0E93F1A0285869F100AC8898 /* TicketWritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F19F285869F100AC8898 /* TicketWritingView.swift */; };
 		0E93F1A228586A8700AC8898 /* SongListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F1A128586A8700AC8898 /* SongListViewModel.swift */; };
 		0E93F1A428586AB000AC8898 /* ArtworkLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E93F1A328586AB000AC8898 /* ArtworkLoader.swift */; };
+		0EC6C8442864B5E100832C13 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC6C8432864B5E100832C13 /* MailView.swift */; };
+		0EC6C8462864BB8300832C13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0EC6C8452864BB8300832C13 /* GoogleService-Info.plist */; };
+		0EC6C8472864C2F300832C13 /* MakeTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A776A1285301BF001FC86E /* MakeTicketView.swift */; };
 		4452235E2858360500F456CD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4452235D2858360500F456CD /* FirebaseAuth */; };
 		445223602858360500F456CD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 4452235F2858360500F456CD /* FirebaseDatabase */; };
 		445223622858360500F456CD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 445223612858360500F456CD /* FirebaseFirestore */; };
@@ -28,7 +31,6 @@
 		84A776912852D80A001FC86E /* MuseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A776902852D80A001FC86E /* MuseUITestsLaunchTests.swift */; };
 		84A7769E2852EF75001FC86E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7769D2852EF75001FC86E /* MainView.swift */; };
 		84A776A02852FD70001FC86E /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7769F2852FD70001FC86E /* MyPageView.swift */; };
-		84A776A2285301BF001FC86E /* MakeTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A776A1285301BF001FC86E /* MakeTicketView.swift */; };
 		84DC485A2856DEB300EE8067 /* TicketListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DC48592856DEB300EE8067 /* TicketListView.swift */; };
 		A218796F285ABC7500E0610E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A218796E285ABC7500E0610E /* FirebaseManager.swift */; };
 		A2187971285BEC3300E0610E /* TicketModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2187970285BEC3300E0610E /* TicketModalView.swift */; };
@@ -41,7 +43,6 @@
 		A2AC011628582DC300130CB8 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AC010F28582DC300130CB8 /* SessionService.swift */; };
 		A2AC011A28582DC900130CB8 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AC011828582DC900130CB8 /* AuthTextField.swift */; };
 		A2AC011B28582DC900130CB8 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AC011928582DC900130CB8 /* AuthButton.swift */; };
-		A2AC011D28582E5300130CB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A2AC011C28582E5300130CB8 /* GoogleService-Info.plist */; };
 		DD983DAB285392FE00F8AD94 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD983DAA285392FE00F8AD94 /* Color.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,8 @@
 		0E93F19F285869F100AC8898 /* TicketWritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketWritingView.swift; sourceTree = "<group>"; };
 		0E93F1A128586A8700AC8898 /* SongListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewModel.swift; sourceTree = "<group>"; };
 		0E93F1A328586AB000AC8898 /* ArtworkLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLoader.swift; sourceTree = "<group>"; };
+		0EC6C8432864B5E100832C13 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		0EC6C8452864BB8300832C13 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63B2EC6E2856BE5200E9E9CA /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
 		843766EC28587EE500339579 /* TicketMachineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketMachineView.swift; sourceTree = "<group>"; };
 		84A776702852D809001FC86E /* Muse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +99,6 @@
 		A2AC010F28582DC300130CB8 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		A2AC011828582DC900130CB8 /* AuthTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		A2AC011928582DC900130CB8 /* AuthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
-		A2AC011C28582E5300130CB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD983DAA285392FE00F8AD94 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,7 +177,6 @@
 				0E93F1962858670500AC8898 /* MusicSeach */,
 				84A776772852D80A001FC86E /* Assets.xcassets */,
 				DD983DAA285392FE00F8AD94 /* Color.swift */,
-				A2AC011C28582E5300130CB8 /* GoogleService-Info.plist */,
 				84A776792852D80A001FC86E /* Preview Content */,
 			);
 			path = Muse;
@@ -212,6 +213,7 @@
 				84A7769D2852EF75001FC86E /* MainView.swift */,
 				843766EC28587EE500339579 /* TicketMachineView.swift */,
 				63B2EC6E2856BE5200E9E9CA /* TicketView.swift */,
+				0EC6C8432864B5E100832C13 /* MailView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -229,6 +231,7 @@
 		84A776A72853264A001FC86E /* MakeTicket */ = {
 			isa = PBXGroup;
 			children = (
+				0EC6C8452864BB8300832C13 /* GoogleService-Info.plist */,
 				84A776A1285301BF001FC86E /* MakeTicketView.swift */,
 				A218796E285ABC7500E0610E /* FirebaseManager.swift */,
 			);
@@ -397,7 +400,7 @@
 			files = (
 				84A7767B2852D80A001FC86E /* Preview Assets.xcassets in Resources */,
 				84A776782852D80A001FC86E /* Assets.xcassets in Resources */,
-				A2AC011D28582E5300130CB8 /* GoogleService-Info.plist in Resources */,
+				0EC6C8462864BB8300832C13 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +434,7 @@
 				0E93F19A2858676F00AC8898 /* MusicSearchView.swift in Sources */,
 				0E93F1A428586AB000AC8898 /* ArtworkLoader.swift in Sources */,
 				843766ED28587EE500339579 /* TicketMachineView.swift in Sources */,
+				0EC6C8442864B5E100832C13 /* MailView.swift in Sources */,
 				A2AC011228582DC300130CB8 /* RegistrationService.swift in Sources */,
 				0E93F1A228586A8700AC8898 /* SongListViewModel.swift in Sources */,
 				A218796F285ABC7500E0610E /* FirebaseManager.swift in Sources */,
@@ -440,11 +444,10 @@
 				A2187971285BEC3300E0610E /* TicketModalView.swift in Sources */,
 				A2AC011528582DC300130CB8 /* LoginService.swift in Sources */,
 				A2AC011A28582DC900130CB8 /* AuthTextField.swift in Sources */,
-				84A776A2285301BF001FC86E /* MakeTicketView.swift in Sources */,
 				A2AC011428582DC300130CB8 /* LoginView.swift in Sources */,
 				A2AC011328582DC300130CB8 /* LoginViewModel.swift in Sources */,
 				84DC485A2856DEB300EE8067 /* TicketListView.swift in Sources */,
-				84A776A2285301BF001FC86E /* MakeTicketView.swift in Sources */,
+				0EC6C8472864C2F300832C13 /* MakeTicketView.swift in Sources */,
 				63B2EC6F2856BE5200E9E9CA /* TicketView.swift in Sources */,
 				0E93F19E2858689300AC8898 /* MusicSearchApp.swift in Sources */,
 				DD983DAB285392FE00F8AD94 /* Color.swift in Sources */,
@@ -607,7 +610,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Muse/Preview Content\"";
-				DEVELOPMENT_TEAM = U9NVHQ73X4;
+				DEVELOPMENT_TEAM = BQUJTNYMGY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -615,6 +618,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -636,7 +640,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Muse/Preview Content\"";
-				DEVELOPMENT_TEAM = 848PGS94YW;
+				DEVELOPMENT_TEAM = BQUJTNYMGY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -644,6 +648,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
